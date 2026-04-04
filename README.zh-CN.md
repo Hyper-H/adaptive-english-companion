@@ -1,5 +1,7 @@
 # Adaptive English Companion
 
+[简体中文](README.zh-CN.md) | [English](README.md)
+
 `Adaptive English Companion` 是一个面向 Codex 的英语学习 skill，适合不想走传统应试背词路线、而希望通过对话逐步提升英语表达能力的学习者。它支持中英混输，会优先理解你的真实意思，再给出更自然的英文表达，并且只在必要时提供中文解释。
 
 这个 skill 同时支持两种使用方式：
