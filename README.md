@@ -1,0 +1,76 @@
+# Adaptive English Companion
+
+Adaptive English Companion is a Codex skill for learners who want to improve English through conversation instead of exam-style memorization. It supports mixed Chinese-English input, gives natural English reformulations, and uses Chinese explanations only when they are likely to help.
+
+The skill is designed for two use cases:
+
+- General use: anyone can install the skill and start practicing immediately.
+- Personalized use: a learner can keep a lightweight profile so the coach gradually adapts to their habits, weak points, and preferred support level.
+
+## What It Does
+
+- Accepts mixed Chinese-English input without forcing the learner to speak perfect English first
+- Infers intended meaning before correcting surface errors
+- Gives natural English phrasing proactively
+- Uses clarification only when ambiguity is meaningful
+- Reduces unnecessary Chinese explanations when the learner is clearly keeping up
+- Supports both daily conversation and study or research discussion
+
+## Why It Uses a Profile
+
+The profile is not a transcript. It is a short learner snapshot.
+
+It stores only durable, high-value information such as:
+
+- current rough level
+- recurring error patterns
+- support preferences
+- current learning focus
+
+This lets the coach feel more like a familiar teacher without making every response long or expensive.
+
+## Repository Layout
+
+```text
+adaptive-english-companion/
+├── SKILL.md
+├── README.md
+├── README.zh-CN.md
+├── agents/openai.yaml
+└── references/
+    ├── profile-template.md
+    └── update-rules.md
+```
+
+## Install
+
+Install the skill from a GitHub repo/path using Codex skill installation flows, or copy the folder into your local Codex skills directory.
+
+If you are publishing this for others, keep the folder name exactly `adaptive-english-companion`.
+
+## Suggested Usage
+
+Example prompts:
+
+- `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
+- `Use $adaptive-english-companion to help me express this idea naturally in English.`
+- `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
+
+## Personalized Setup
+
+1. Copy [references/profile-template.md](references/profile-template.md) to a learner-specific file such as `learner-profile.md`.
+2. Fill in a few starting preferences and level notes.
+3. When using the skill, provide that profile to the agent or place it where your workflow can easily reference it.
+4. Update it only when new stable patterns emerge.
+
+For Chinese-speaking users, a bilingual starter template is also available at [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md).
+
+## Publishing Notes
+
+- `agents/openai.yaml` is included for UI metadata.
+- The skill is intentionally lightweight so it can be used without a profile.
+- The profile system is optional and should stay short.
+
+## License
+
+Choose a license before public release if you want others to reuse or modify the repository. MIT is a simple default for open sharing.
