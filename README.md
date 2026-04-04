@@ -50,7 +50,9 @@ After installation, start with any of these:
 
 - `Use $adaptive-english-companion to be my English teacher.`
 - `ET help me practice through mixed Chinese-English conversation.`
+- `ET, help me practice through mixed Chinese-English conversation.`
 - `et help me explain this project in natural English.`
+- `et, help me explain this project in natural English.`
 - `English teacher, help me practice through mixed Chinese-English conversation.`
 - `english teacher, help me explain this code more naturally.`
 - `英语老师，和我一起练英语。`
@@ -78,8 +80,12 @@ Convenient shorthand:
 - `英语老师`
 - `ET:`
 - `et:`
+- `ET,`
+- `et,`
 
 In a fresh chat, the full skill name is safest. In everyday use, shorthand is often more natural.
+
+The shorthand works best when the message clearly asks for English coaching, correction, polishing, or conversation practice. If the message is mainly about something else, such as project status or bug triage, use the full skill name to force the route more reliably.
 
 ## Real Usage Examples
 
@@ -258,6 +264,18 @@ It should stay short. Its purpose is to help the teacher feel more familiar, not
 
 Yes. Install it and start chatting.
 
+### Why did `ET` or `et,` not trigger the skill in one of my chats?
+
+Shorthand cues are hints, not hard guarantees.
+
+They work best when the rest of the message clearly sounds like an English-teacher request, for example correction, polishing, explanation in better English, or conversation practice.
+
+If the message is mainly about another topic, such as coding progress, bug fixes, or project planning, Codex may route it as a normal request instead of this skill.
+
+If you want the strongest possible trigger, use:
+
+- `$adaptive-english-companion`
+
 ### Do I need to create `learner-profile.md` myself?
 
 No. The intended design is that the agent creates it for the learner if it is missing, then keeps using and updating it afterward.
@@ -317,7 +335,9 @@ Current GitHub repo:
 
 Install it through Codex skill installation flows, or copy the folder into your local Codex skills directory.
 
-After installing a new skill, restart Codex so the new skill can be discovered and loaded. Without a restart, Codex may not pick up the newly installed skill immediately.
+For a first-time install, opening a new chat is often enough, but some Codex setups may still need a restart before the new skill is discovered.
+
+If you update the GitHub repo later, that does not automatically update an already installed local copy. Sync or reinstall the local skill folder first, then test again in a new chat.
 
 ## Notes for Users
 

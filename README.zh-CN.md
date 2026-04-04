@@ -50,7 +50,9 @@
 
 - `Use $adaptive-english-companion to be my English teacher.`
 - `ET help me practice through mixed Chinese-English conversation.`
+- `ET, help me practice through mixed Chinese-English conversation.`
 - `et help me explain this project in natural English.`
+- `et, help me explain this project in natural English.`
 - `English teacher, help me practice through mixed Chinese-English conversation.`
 - `english teacher, help me explain this code more naturally.`
 - `英语老师，和我一起练英语。`
@@ -80,8 +82,12 @@
 - `英语老师`
 - `ET:`
 - `et:`
+- `ET,`
+- `et,`
 
 如果是新开对话，完整写 skill 名最稳。日常使用时，短触发词通常会更自然。
+
+这些短触发词更适合“看起来就像在找英语老师”的消息，比如纠错、润色、自然表达、陪练对话。如果整句话主要是在问项目进度、bug 修复或别的任务，建议直接写完整 skill 名，这样更稳。
 
 ## 真实对话示例
 
@@ -260,6 +266,18 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 可以。安装后直接开始聊天就行。
 
+### 为什么我有一次写了 `ET` 或 `et,`，skill 还是没触发？
+
+短触发词更像“强提示”，不是绝对硬开关。
+
+它最容易在整句都明显像英语老师请求时命中，比如纠错、润色、把一句话说得更自然，或者陪你练英语对话。
+
+如果整句话主要是在问别的话题，比如编码进度、bug 修复、项目计划，Codex 也可能把它当成普通请求，而不是这个 skill。
+
+如果你想用最稳的触发方式，直接写：
+
+- `$adaptive-english-companion`
+
 ### `learner-profile.md` 需要我自己创建吗？
 
 不需要。这个 skill 的设计就是：如果 profile 不存在，agent 应该自动创建；之后再持续读取和更新它。
@@ -319,9 +337,9 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 你可以通过 Codex 的 skill 安装流程安装它，或者直接复制到本地 Codex skills 目录中。
 
-安装完成后，重启 Codex，让它识别这个新 skill。
+如果是第一次安装，很多时候新开一个对话就够了；但某些 Codex 环境下，仍然可能需要重启一次才能发现新 skill。
 
-如果安装了新 skill 但没有重启 Codex，Codex 可能不会立刻加载它。
+如果你后面更新的是 GitHub 仓库，这不会自动覆盖你本地已经安装的 skill 副本。你需要先同步或重新安装本地 skill 文件夹，再到新对话里测试。
 
 ## 给用户的说明
 
