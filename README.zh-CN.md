@@ -48,6 +48,23 @@ adaptive-english-companion/
 
 如果你打算公开分享，请保持文件夹名为 `adaptive-english-companion`。
 
+当前 GitHub 仓库：
+
+- `https://github.com/Hyper-H/adaptive-english-companion`
+
+如果你要从这个仓库根目录直接安装，就把仓库根目录当作 skill 路径，并保持安装名为 `adaptive-english-companion`。
+
+安装完成后，重启 Codex 才能识别这个新 skill。
+
+## 快速开始
+
+1. 先安装 skill。
+2. 用下面这样的提示词开第一轮：
+   `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
+3. 如果你想要个性化体验，就把 [references/sample-learner-profile.md](references/sample-learner-profile.md) 复制成你自己的 `learner-profile.md`。
+4. 只有出现稳定模式时再更新 profile。
+5. 长期复用同一个 profile，这样这个教练才会越来越“懂你”。
+
 ## 推荐用法
 
 示例提示词：
@@ -55,6 +72,14 @@ adaptive-english-companion/
 - `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
+- `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
+
+## 适合谁
+
+- 不喜欢“先背词再使用”的英语学习者
+- 很自然会中英混着想、混着表达的中文使用者
+- 既想练日常表达，也想练学习或科研英语的学生
+- 希望 agent 高效陪练，而不是每句话都被过度讲解的用户
 
 ## 个性化配置
 
@@ -64,6 +89,8 @@ adaptive-english-companion/
 4. 只有在出现新的稳定模式时再更新，不要把它写成流水账。
 
 如果你更习惯中文填写，也可以直接使用 [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md)。
+
+如果你想直接看一份已经填好的示例，也可以参考 [references/sample-learner-profile.md](references/sample-learner-profile.md)。
 
 ## 发布说明
 

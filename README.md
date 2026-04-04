@@ -48,6 +48,23 @@ Install the skill from a GitHub repo/path using Codex skill installation flows, 
 
 If you are publishing this for others, keep the folder name exactly `adaptive-english-companion`.
 
+Current GitHub repo:
+
+- `https://github.com/Hyper-H/adaptive-english-companion`
+
+If you want to install the skill from this repository root, use the repository root as the skill path and keep the installed name as `adaptive-english-companion`.
+
+After installation, restart Codex to pick up the new skill.
+
+## Quick Start
+
+1. Install the skill.
+2. Start with a simple prompt such as:
+   `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
+3. If you want personalization, copy [references/sample-learner-profile.md](references/sample-learner-profile.md) into your own `learner-profile.md`.
+4. Adjust the profile only when stable patterns emerge.
+5. Reuse the same profile over time so the coach can adapt more consistently.
+
 ## Suggested Usage
 
 Example prompts:
@@ -55,6 +72,14 @@ Example prompts:
 - `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
+- `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
+
+## Good Fit
+
+- Learners who dislike memorization-first English study
+- Chinese-speaking learners who naturally think in mixed Chinese and English
+- Students who want daily conversation practice without giving up academic English
+- Users who want a coach that stays efficient instead of over-explaining every sentence
 
 ## Personalized Setup
 
@@ -64,6 +89,8 @@ Example prompts:
 4. Update it only when new stable patterns emerge.
 
 For Chinese-speaking users, a bilingual starter template is also available at [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md).
+
+A filled sample is available at [references/sample-learner-profile.md](references/sample-learner-profile.md).
 
 ## Publishing Notes
 
