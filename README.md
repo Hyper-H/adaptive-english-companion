@@ -4,7 +4,7 @@
 
 A Codex skill for learners who want an English teacher that gradually becomes familiar, supportive, and genuinely useful in real conversation.
 
-Adaptive English Companion is designed to feel less like a grammar examiner and more like a companion-style teacher. It accepts mixed Chinese-English input, helps the learner say what they really mean, offers natural English reformulations, and gradually adapts to recurring habits, weak points, and preferences over time.
+Adaptive English Companion is designed to feel less like a grammar examiner and more like a companion-style teacher. It accepts mixed Chinese-English input, helps the learner say what they really mean, offers natural English reformulations, and gradually adapts to recurring habits, weak points, and preferences over time through a learner profile that it reads, creates, and updates automatically.
 
 ## What Makes It Different
 
@@ -68,7 +68,33 @@ In a fresh chat, the full skill name is safest. In everyday use, shorthand is of
 
 ## Real Usage Examples
 
-### Example 1: Mixed Chinese-English input
+### Example 1: Project explanation in mixed Chinese-English
+
+User:
+
+```text
+ET, this is a program which use Transformer to 解决图像分割问题. Explain this program.
+```
+
+Good response style:
+
+```text
+You can say:
+"This program uses a Transformer-based model to solve an image segmentation problem."
+
+如果你想说得更完整一点，也可以说：
+"This program uses a Transformer architecture to address the problem of image segmentation."
+
+Now let me explain the program in a clearer way:
+
+Image segmentation means dividing an image into meaningful regions, such as objects or areas.
+A Transformer-based model helps the program capture long-range relationships across the image, which can improve segmentation quality.
+
+如果用中文简单解释，这个项目本质上是在做：
+利用 Transformer 模型去理解图像中不同区域的关系，从而把图像准确分割开来。
+```
+
+### Example 2: Building a project
 
 User:
 
@@ -79,18 +105,41 @@ ET: I want create a project which can help me 学习英语.
 Good response style:
 
 ```text
-If I understand you correctly, you want to say that you want to build a project that can help you learn English.
-
-A more natural way to say it is:
+You can say:
 "I want to create a project that can help me learn English."
 
-如果你想表达得更自然一点，也可以说：
+如果你想更自然一点，也可以说：
 "I want to build a project that helps me improve my English."
 
 Now tell me more: what kind of project do you want to build?
+For example, do you want a chatbot, a vocabulary tool, or a speaking practice app?
 ```
 
-### Example 2: Daily conversation coaching
+### Example 3: Explaining your own code or program
+
+User:
+
+```text
+英语老师，这个程序是用多模态模型去做医学图像分类的，帮我用英文介绍一下。
+```
+
+Good response style:
+
+```text
+You can say:
+"This program uses a multimodal model for medical image classification."
+
+如果你想说得更完整一点，也可以说：
+"This project applies a multimodal model to classify medical images."
+
+Here is a clearer explanation:
+
+The system combines information from multiple sources or modalities and uses that combined information to identify image categories more accurately.
+
+如果你愿意，我们还可以继续把它扩展成适合论文、汇报或面试的版本。
+```
+
+### Example 4: Daily conversation coaching
 
 User:
 
@@ -110,7 +159,7 @@ You could say:
 That is a very good sentence to practice. What happened today?
 ```
 
-### Example 3: Research or study discussion
+### Example 5: Research or study discussion
 
 User:
 
@@ -143,26 +192,15 @@ That means it should gradually learn things like:
 
 The personalization should stay lightweight. It should not become a long transcript or a heavy log.
 
-## How To Make Long-Term Personalization Stronger
+This skill uses one main long-term memory mechanism:
 
-The skill works immediately after installation. That part should feel frictionless.
+- a learner profile
 
-If you also want stronger long-term memory across chats, the most practical setup is to give the agent a fixed writable profile file.
+The intended behavior is:
 
-For example:
-
-- `D:\English\learner-profile.md`
-
-Then use a message like:
-
-```text
-Use $adaptive-english-companion to be my English teacher.
-Please create and maintain my learner profile at D:\English\learner-profile.md.
-```
-
-This gives the agent a stable place to save and update a small learner profile over time.
-
-If you do not do this, the skill still works normally. The difference is only that long-term personalization may be weaker depending on the environment.
+- the skill checks for the learner profile
+- if it does not exist, the agent creates it
+- after that, the agent reads it and updates it over time
 
 ## What The Learner Profile Is
 
@@ -185,9 +223,7 @@ Yes. Install it and start chatting.
 
 ### Do I need to create `learner-profile.md` myself?
 
-No. You do not need to write it yourself for the skill to be useful.
-
-If you want stronger long-term personalization, it helps to give the agent a fixed writable path so it can create and maintain the profile for you.
+No. The intended design is that the agent creates it for the learner if it is missing, then keeps using and updating it afterward.
 
 ### Who decides when the profile should be updated?
 

@@ -4,7 +4,7 @@
 
 一个面向 Codex 的英语学习 skill，适合想要“越来越熟悉自己”的陪伴式英语老师，而不是只会机械纠错的工具。
 
-`Adaptive English Companion` 想做的，不是传统那种像批改器一样的英语工具，而是一个更像熟悉你的老师的英语搭子。它支持中英混输，会先理解你真正想表达的意思，再给你更自然的英文表达；它不会每次都把对话变成语法课，而是会继续和你聊下去，并随着使用逐渐更懂你的习惯、弱点和偏好。
+`Adaptive English Companion` 想做的，不是传统那种像批改器一样的英语工具，而是一个更像熟悉你的老师的英语搭子。它支持中英混输，会先理解你真正想表达的意思，再给你更自然的英文表达；它不会每次都把对话变成语法课，而是会继续和你聊下去，并通过自动读取、创建和更新 learner profile，随着使用逐渐更懂你的习惯、弱点和偏好。
 
 ## 它为什么不一样
 
@@ -68,7 +68,33 @@
 
 ## 真实对话示例
 
-### 示例 1：中英混输
+### 示例 1：项目解释场景
+
+用户：
+
+```text
+ET，this is a program which use Transformer to 解决图像分割问题.explain this program.
+```
+
+理想回答风格：
+
+```text
+You can say:
+"This program uses a Transformer-based model to solve an image segmentation problem."
+
+如果你想说得更完整一点，也可以说：
+"This program uses a Transformer architecture to address the problem of image segmentation."
+
+Now let me explain the program in a clearer way:
+
+Image segmentation means dividing an image into meaningful regions, such as objects or areas.
+A Transformer-based model helps the program capture long-range relationships across the image, which can improve segmentation quality.
+
+如果用中文简单解释，这个项目本质上是在做：
+利用 Transformer 模型去理解图像中不同区域的关系，从而把图像准确分割开来。
+```
+
+### 示例 2：创建项目
 
 用户：
 
@@ -79,18 +105,41 @@ ET: I want create a project which can help me 学习英语.
 理想回答风格：
 
 ```text
-If I understand you correctly, you want to say that you want to build a project that can help you learn English.
-
-A more natural way to say it is:
+You can say:
 "I want to create a project that can help me learn English."
 
-如果你想表达得更自然一点，也可以说：
+如果你想更自然一点，也可以说：
 "I want to build a project that helps me improve my English."
 
 Now tell me more: what kind of project do you want to build?
+For example, do you want a chatbot, a vocabulary tool, or a speaking practice app?
 ```
 
-### 示例 2：日常表达练习
+### 示例 3：介绍自己的程序
+
+用户：
+
+```text
+英语老师，这个程序是用多模态模型去做医学图像分类的，帮我用英文介绍一下。
+```
+
+理想回答风格：
+
+```text
+You can say:
+"This program uses a multimodal model for medical image classification."
+
+如果你想说得更完整一点，也可以说：
+"This project applies a multimodal model to classify medical images."
+
+Here is a clearer explanation:
+
+The system combines information from multiple sources or modalities and uses that combined information to identify image categories more accurately.
+
+如果你愿意，我们还可以继续把它扩展成适合论文、汇报或面试的版本。
+```
+
+### 示例 4：日常表达练习
 
 用户：
 
@@ -110,7 +159,7 @@ You could say:
 That is a very good sentence to practice. What happened today?
 ```
 
-### 示例 3：学习或科研表达
+### 示例 5：学习或科研表达
 
 用户：
 
@@ -143,26 +192,15 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 这种个性化应该保持轻量，不应该变成长篇聊天记录或庞大日志。
 
-## 怎样让长期个性化更稳定
+这个 skill 的长期记忆机制主要只有一种：
 
-这个 skill 安装后就能直接用，这是第一层体验。
+- learner profile
 
-如果你还想让“长期记住你”这件事更稳定，最实用的方法是给 agent 一个固定的可写 profile 文件路径。
+理想行为应该是：
 
-比如：
-
-- `D:\English\learner-profile.md`
-
-然后你可以这样说：
-
-```text
-Use $adaptive-english-companion to be my English teacher.
-Please create and maintain my learner profile at D:\English\learner-profile.md.
-```
-
-这样 agent 就有一个稳定的位置去保存和更新你的 learner profile。
-
-如果你不这样做，skill 仍然可以正常使用。差别只是“长期个性化”这部分会更依赖当前环境本身是否支持保存。
+- skill 先检查 learner profile
+- 如果没有，agent 自动创建
+- 之后 agent 持续读取并更新它
 
 ## learner profile 是什么
 
@@ -185,9 +223,7 @@ Please create and maintain my learner profile at D:\English\learner-profile.md.
 
 ### `learner-profile.md` 需要我自己创建吗？
 
-不需要。skill 本身不依赖你先手写这个文件才可用。
-
-如果你想让长期个性化更稳定，给 agent 一个固定可写路径会更好，但不是必须条件。
+不需要。这个 skill 的设计就是：如果 profile 不存在，agent 应该自动创建；之后再持续读取和更新它。
 
 ### “稳定模式”是谁判断的？
 
