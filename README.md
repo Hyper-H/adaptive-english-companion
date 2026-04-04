@@ -7,6 +7,14 @@ A Codex skill for adaptive bilingual English practice with mixed Chinese-English
 
 Adaptive English Companion is a Codex skill for learners who want to improve English through conversation instead of exam-style memorization. It supports mixed Chinese-English input, gives natural English reformulations, and uses Chinese explanations only when they are likely to help.
 
+## At a Glance
+
+- Install the skill and start using it immediately
+- Use `$adaptive-english-companion` for the most reliable trigger
+- Use `English teacher` or `ET:` as a lighter shorthand when convenient
+- Let the agent auto-bootstrap a tiny learner profile when persistence is available
+- Expect modest overhead when the profile stays short and bilingual output stays selective
+
 The skill is designed for two use cases:
 
 - General use: anyone can install the skill and start practicing immediately.
@@ -73,6 +81,40 @@ After installation, restart Codex to pick up the new skill.
 3. If the workflow supports persistence, let the agent bootstrap a small `learner-profile.md` automatically, or copy [references/sample-learner-profile.md](references/sample-learner-profile.md) if you want to start from a file yourself.
 4. Adjust the profile only when stable patterns emerge.
 5. Reuse the same profile over time so the coach can adapt more consistently.
+
+## FAQ
+
+### Can I use it immediately after installation?
+
+Yes. The skill works without any manual setup file.
+
+### Do I need to create `learner-profile.md` myself?
+
+No. If the workflow supports persistence, the agent can create a compact first profile automatically. If persistence is not available, the skill can still work without a saved profile.
+
+### Who decides when a "stable pattern" should update the profile?
+
+The agent decides. A stable pattern means a repeated or high-confidence learner trait, not a one-off mistake or typo.
+
+Typical stable patterns:
+
+- recurring meaning drift in long sentences
+- repeated literal translation from Chinese
+- consistent need for Chinese explanation only on abstract content
+- clear preference for light correction
+
+Typical non-stable patterns:
+
+- one typo
+- one awkward sentence
+- one accidental tense error
+
+### Do I always need to type the full skill name?
+
+No, but it is the safest option in a fresh chat.
+
+- Most reliable: `$adaptive-english-companion`
+- Lighter shorthand: `English teacher` or `ET:`
 
 ## Suggested Usage
 
@@ -142,6 +184,17 @@ Practical expectation:
 - without a profile, overhead should be small
 - with a short profile, overhead is usually modest and worth the personalization
 - the biggest cost usually comes from long bilingual outputs, not from the existence of the skill itself
+
+## Recommended Everyday Use
+
+For a new chat:
+
+- `Use $adaptive-english-companion to be my English teacher.`
+
+For a lighter shorthand once you are comfortable:
+
+- `ET: help me practice through mixed Chinese-English conversation.`
+- `English teacher, help me say this naturally in English.`
 
 ## License
 
