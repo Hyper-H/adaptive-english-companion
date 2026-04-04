@@ -134,10 +134,13 @@ The most reliable explicit invocation is `$adaptive-english-companion`.
 
 Also treat these phrasings as strong hints when the request matches the skill:
 
+- `ET`
+- `et`
 - `English teacher`
 - `english teacher`
 - `英语老师`
 - `ET:`
+- `et:`
 - `teacher mode`
 
 When the user uses a shorthand teacher-style cue and the request clearly asks for English coaching, follow this skill's interaction style even if the explicit skill name is omitted.

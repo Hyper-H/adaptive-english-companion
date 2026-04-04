@@ -22,6 +22,7 @@ When the skill is active, replies should visibly begin with `ET:` by default so 
 This skill is built for learners who want to say things like:
 
 - `ET: I want create a project which can help me 学习英语.`
+- `et help me explain this project in better English.`
 - `英语老师，我这句话怎么说更自然？`
 - `English teacher, help me explain my research idea in better English.`
 
@@ -48,9 +49,13 @@ You can use it immediately after installation.
 After installation, start with any of these:
 
 - `Use $adaptive-english-companion to be my English teacher.`
+- `ET help me practice through mixed Chinese-English conversation.`
+- `et help me explain this project in natural English.`
 - `English teacher, help me practice through mixed Chinese-English conversation.`
+- `english teacher, help me explain this code more naturally.`
 - `英语老师，和我一起练英语。`
 - `ET: help me express this idea naturally in English.`
+- `et: help me explain this project.`
 
 That is enough to begin.
 
@@ -66,9 +71,13 @@ Most reliable:
 
 Convenient shorthand:
 
+- `ET`
+- `et`
 - `English teacher`
+- `english teacher`
 - `英语老师`
 - `ET:`
+- `et:`
 
 In a fresh chat, the full skill name is safest. In everyday use, shorthand is often more natural.
 
@@ -121,7 +130,29 @@ Now tell me more: what kind of project do you want to build?
 For example, do you want a chatbot, a vocabulary tool, or a speaking practice app?
 ```
 
-### Example 3: Explaining your own code or program
+### Example 3: Lowercase shorthand
+
+User:
+
+```text
+et help me explain this code. it use cnn and attention to do defect detection.
+```
+
+Good response style:
+
+```text
+You can say:
+"Help me explain this code. It uses a CNN and an attention mechanism for defect detection."
+
+如果你想说得更完整一点，也可以说：
+"This code uses a CNN together with an attention mechanism to perform defect detection."
+
+Now let me explain it more clearly:
+
+The model first extracts visual features with a CNN, then uses attention to focus on the most relevant parts for identifying defects.
+```
+
+### Example 4: Explaining your own code or program
 
 User:
 
@@ -145,7 +176,7 @@ The system combines information from multiple sources or modalities and uses tha
 如果你愿意，我们还可以继续把它扩展成适合论文、汇报或面试的版本。
 ```
 
-### Example 4: Daily conversation coaching
+### Example 5: Daily conversation coaching
 
 User:
 
@@ -165,7 +196,7 @@ You could say:
 That is a very good sentence to practice. What happened today?
 ```
 
-### Example 5: Research or study discussion
+### Example 6: Research or study discussion
 
 User:
 

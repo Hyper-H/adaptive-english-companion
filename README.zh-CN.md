@@ -22,6 +22,7 @@
 这个 skill 是为下面这种真实使用场景设计的：
 
 - `ET: I want create a project which can help me 学习英语.`
+- `et help me explain this project in better English.`
 - `英语老师，我这句话怎么说更自然？`
 - `English teacher, help me explain my research idea in better English.`
 
@@ -48,9 +49,13 @@
 安装好 skill 后，直接这样开聊就行：
 
 - `Use $adaptive-english-companion to be my English teacher.`
+- `ET help me practice through mixed Chinese-English conversation.`
+- `et help me explain this project in natural English.`
 - `English teacher, help me practice through mixed Chinese-English conversation.`
+- `english teacher, help me explain this code more naturally.`
 - `英语老师，和我一起练英语。`
 - `ET: help me express this idea naturally in English.`
+- `et: help me explain this project.`
 
 到这里就够了。
 
@@ -68,9 +73,13 @@
 
 更轻便的写法：
 
+- `ET`
+- `et`
 - `English teacher`
+- `english teacher`
 - `英语老师`
 - `ET:`
+- `et:`
 
 如果是新开对话，完整写 skill 名最稳。日常使用时，短触发词通常会更自然。
 
@@ -123,7 +132,29 @@ Now tell me more: what kind of project do you want to build?
 For example, do you want a chatbot, a vocabulary tool, or a speaking practice app?
 ```
 
-### 示例 3：介绍自己的程序
+### 示例 3：小写快捷触发
+
+用户：
+
+```text
+et help me explain this code. it use cnn and attention to do defect detection.
+```
+
+理想回答风格：
+
+```text
+You can say:
+"Help me explain this code. It uses a CNN and an attention mechanism for defect detection."
+
+如果你想说得更完整一点，也可以说：
+"This code uses a CNN together with an attention mechanism to perform defect detection."
+
+Now let me explain it more clearly:
+
+The model first extracts visual features with a CNN, then uses attention to focus on the most relevant parts for identifying defects.
+```
+
+### 示例 4：介绍自己的程序
 
 用户：
 
@@ -147,7 +178,7 @@ The system combines information from multiple sources or modalities and uses tha
 如果你愿意，我们还可以继续把它扩展成适合论文、汇报或面试的版本。
 ```
 
-### 示例 4：日常表达练习
+### 示例 5：日常表达练习
 
 用户：
 
@@ -167,7 +198,7 @@ You could say:
 That is a very good sentence to practice. What happened today?
 ```
 
-### 示例 5：学习或科研表达
+### 示例 6：学习或科研表达
 
 用户：
 
