@@ -169,12 +169,4 @@ After installation, restart Codex so the new skill can be discovered.
 
 ## License
 
-This repository is released under the MIT License.
-
-What that means in plain language:
-
-- other people may use, copy, modify, and share this project
-- they must keep the copyright notice and license text
-- the project is provided without warranty
-
-As the developer, you generally only need to keep the existing [LICENSE](LICENSE) file in the repository. The current `LICENSE` file is already in standard MIT format.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
