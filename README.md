@@ -34,6 +34,10 @@ It stores only durable, high-value information such as:
 
 This lets the coach feel more like a familiar teacher without making every response long or expensive.
 
+You do not need a profile to start using the skill. The profile is optional.
+
+If you want personalization but do not want to create the file yourself, the agent can draft an initial `learner-profile.md` for you based on your first conversations. You can then keep, edit, or ignore it.
+
 ## Repository Layout
 
 ```text
@@ -66,7 +70,7 @@ After installation, restart Codex to pick up the new skill.
 1. Install the skill.
 2. Start with a simple prompt such as:
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. If you want personalization, copy [references/sample-learner-profile.md](references/sample-learner-profile.md) into your own `learner-profile.md`.
+3. If you want personalization, either copy [references/sample-learner-profile.md](references/sample-learner-profile.md) into your own `learner-profile.md` or ask the agent to create a first draft for you.
 4. Adjust the profile only when stable patterns emerge.
 5. Reuse the same profile over time so the coach can adapt more consistently.
 
@@ -78,6 +82,14 @@ Example prompts:
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
 - `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
+
+Shorter prompts that can work well in practice:
+
+- `English teacher, help me say this naturally in English.`
+- `ET: I want to practice speaking through mixed Chinese-English conversation.`
+- `ET: please create a first learner profile for me and then coach me with it.`
+
+For best reliability across fresh chats, explicit `$adaptive-english-companion` invocation is still the safest option.
 
 ## Good Fit
 
@@ -92,6 +104,8 @@ Example prompts:
 2. Fill in a few starting preferences and level notes.
 3. When using the skill, provide that profile to the agent or place it where your workflow can easily reference it.
 4. Update it only when new stable patterns emerge.
+
+If you do not want to create the file manually, ask the agent to draft one for you from the template.
 
 For Chinese-speaking users, a bilingual starter template is also available at [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md).
 

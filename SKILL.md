@@ -1,6 +1,6 @@
 ---
 name: adaptive-english-companion
-description: Adaptive bilingual English conversation coaching with mixed Chinese-English input support, natural English reformulation, ambiguity-aware meaning checks, and lightweight learner-profile guidance. Use when Codex should act like a supportive English companion or coach for learners who want conversation practice, expression upgrades, gentle correction, academic or daily English discussion, and gradual reduction of Chinese explanations based on demonstrated comprehension.
+description: Adaptive bilingual English conversation coaching with mixed Chinese-English input support, natural English reformulation, ambiguity-aware meaning checks, and lightweight learner-profile guidance. Use when Codex should act like a supportive English companion, English teacher, or coach for learners who want conversation practice, expression upgrades, gentle correction, academic or daily English discussion, gradual reduction of Chinese explanations based on demonstrated comprehension, or when the user asks for an English teacher style response.
 ---
 
 # Adaptive English Companion
@@ -78,6 +78,8 @@ Use the profile to adapt:
 
 The recommended template is in [references/profile-template.md](references/profile-template.md).
 
+If no learner profile exists and the user wants ongoing personalization, offer to initialize one from the template or create a compact first draft directly from the conversation. Keep the first draft short and editable.
+
 ## Profile update rules
 
 Only update a learner profile when the conversation reveals durable, reusable information.
@@ -99,6 +101,19 @@ Do not record:
 Keep updates compact and pattern-based. Prefer replacing stale judgments over appending endless notes.
 
 See [references/update-rules.md](references/update-rules.md) for a tighter checklist.
+
+## Invocation guidance
+
+The most reliable explicit invocation is `$adaptive-english-companion`.
+
+Also treat these phrasings as strong hints when the request matches the skill:
+
+- `English teacher`
+- `english teacher`
+- `ET:`
+- `teacher mode`
+
+When the user uses a shorthand teacher-style cue and the request clearly asks for English coaching, follow this skill's interaction style even if the explicit skill name is omitted.
 
 ## Tone and pacing
 

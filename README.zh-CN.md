@@ -31,6 +31,10 @@
 
 这样做的好处是：agent 会越来越像一个熟悉你的陪伴式老师，但不会因为保存太多内容而浪费太多 token。
 
+不过你不需要先有 profile 才能开始用，这个 profile 是可选的。
+
+如果你想要个性化，但不想自己手动建文件，也可以直接让 agent 根据前几轮对话先帮你生成一个初版 `learner-profile.md`，你之后再决定要不要继续用和修改。
+
 ## 仓库结构
 
 ```text
@@ -63,7 +67,7 @@ adaptive-english-companion/
 1. 先安装 skill。
 2. 用下面这样的提示词开第一轮：
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. 如果你想要个性化体验，就把 [references/sample-learner-profile.md](references/sample-learner-profile.md) 复制成你自己的 `learner-profile.md`。
+3. 如果你想要个性化体验，可以把 [references/sample-learner-profile.md](references/sample-learner-profile.md) 复制成你自己的 `learner-profile.md`，也可以直接让 agent 先帮你生成一个初版。
 4. 只有出现稳定模式时再更新 profile。
 5. 长期复用同一个 profile，这样这个教练才会越来越“懂你”。
 
@@ -75,6 +79,14 @@ adaptive-english-companion/
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
 - `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
+
+更短、更接近自然说法的启动方式也可以这样写：
+
+- `English teacher, help me say this naturally in English.`
+- `ET: I want to practice speaking through mixed Chinese-English conversation.`
+- `ET: please create a first learner profile for me and then coach me with it.`
+
+不过如果你希望在新对话里最稳定地触发这个 skill，显式写 `$adaptive-english-companion` 仍然是最稳的方式。
 
 ## 适合谁
 
@@ -89,6 +101,8 @@ adaptive-english-companion/
 2. 先填入少量偏好和当前水平信息。
 3. 使用 skill 时，把这个 profile 一并提供给 agent，或者放在你工作流里容易引用的位置。
 4. 只有在出现新的稳定模式时再更新，不要把它写成流水账。
+
+如果你不想自己手动创建，也可以直接让 agent 按模板帮你先生成一版。
 
 如果你更习惯中文填写，也可以直接使用 [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md)。
 
