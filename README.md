@@ -1,5 +1,8 @@
 # Adaptive English Companion
 
+一个面向 Codex 的自适应双语英语练习 skill，支持中英混合输入、自然英文改写和轻量学习者画像。  
+A Codex skill for adaptive bilingual English practice with mixed Chinese-English input, natural reformulation, and lightweight learner profiles.
+
 Adaptive English Companion is a Codex skill for learners who want to improve English through conversation instead of exam-style memorization. It supports mixed Chinese-English input, gives natural English reformulations, and uses Chinese explanations only when they are likely to help.
 
 The skill is designed for two use cases:
