@@ -2,51 +2,55 @@
 
 [简体中文](README.zh-CN.md) | [English](README.md)
 
-A Codex skill for learners who want an English teacher that feels less like an examiner and more like a familiar companion.
+A Codex skill for learners who want an English teacher that gradually becomes familiar, supportive, and genuinely useful in real conversation.
 
-Adaptive English Companion is designed to become a gradually more familiar, more helpful, and more natural English coach over time. It accepts mixed Chinese-English input, infers what the learner really means, offers natural English reformulations, and adapts its level of Chinese support instead of forcing one rigid format.
+Adaptive English Companion is designed to feel less like a grammar examiner and more like a companion-style teacher. It accepts mixed Chinese-English input, helps the learner say what they really mean, offers natural English reformulations, and gradually adapts to recurring habits, weak points, and preferences over time.
 
-## Why This Skill Feels Different
+## What Makes It Different
 
-- It acts like a companion-style teacher, not a test grader
-- It lets learners speak first, even with mixed Chinese and English
+- It acts like a companion-style teacher, not an exam-style corrector
+- It lets learners start speaking before their English is perfect
 - It focuses on intended meaning before surface correction
-- It gives natural English phrasing instead of only grammar lectures
-- It reduces unnecessary Chinese when the learner is clearly following
-- It gradually becomes more familiar with the learner's habits and weak points
+- It gives natural English phrasing, not just grammar labels
+- It uses Chinese support only when it is actually helpful
+- It can become more familiar with the learner over time
+
+## What It Feels Like
+
+This skill is built for learners who want to say things like:
+
+- `ET: I want create a project which can help me 学习英语.`
+- `英语老师，我这句话怎么说更自然？`
+- `English teacher, help me explain my research idea in better English.`
+
+And get responses that feel like:
+
+- the agent first figures out what the learner really means
+- the agent gives a more natural English version
+- the agent continues the conversation instead of turning everything into a lecture
+- the agent gradually learns when to explain in Chinese and when not to
 
 ## Core Experience
 
-After installation, the intended experience is simple:
+The intended user experience is simple:
 
-1. Start chatting
-2. Use the skill as your English teacher
-3. Let the agent handle personalization automatically
+1. Install the skill
+2. Start chatting
+3. Use it like an English teacher
+4. Let the personalization become stronger over time
 
-You do not need to manually set up a profile before the skill becomes useful.
-
-When learner information can be saved to a writable file, the skill can maintain a small learner profile in the background. When that is not available, the skill still works normally as an adaptive conversation coach.
-
-## What It Does
-
-- Supports mixed Chinese-English input naturally
-- Infers likely meaning before correcting wording
-- Proactively gives more natural English expressions
-- Uses clarification only when ambiguity really matters
-- Adapts Chinese explanation level based on demonstrated understanding
-- Helps with daily conversation, study discussion, and research discussion
-- Builds lightweight long-term personalization when the environment allows it
+You can use it immediately after installation.
 
 ## Quick Start
 
-Install the skill, then start with any of these:
+After installation, start with any of these:
 
 - `Use $adaptive-english-companion to be my English teacher.`
 - `English teacher, help me practice through mixed Chinese-English conversation.`
 - `英语老师，和我一起练英语。`
 - `ET: help me express this idea naturally in English.`
 
-That is enough to begin. No extra user configuration is required.
+That is enough to begin.
 
 ## Recommended Triggers
 
@@ -60,41 +64,118 @@ Convenient shorthand:
 - `英语老师`
 - `ET:`
 
-In a fresh chat, the full skill name is still the safest option. In regular day-to-day use, the shorthand forms are often more convenient.
+In a fresh chat, the full skill name is safest. In everyday use, shorthand is often more natural.
+
+## Real Usage Examples
+
+### Example 1: Mixed Chinese-English input
+
+User:
+
+```text
+ET: I want create a project which can help me 学习英语.
+```
+
+Good response style:
+
+```text
+If I understand you correctly, you want to say that you want to build a project that can help you learn English.
+
+A more natural way to say it is:
+"I want to create a project that can help me learn English."
+
+如果你想表达得更自然一点，也可以说：
+"I want to build a project that helps me improve my English."
+
+Now tell me more: what kind of project do you want to build?
+```
+
+### Example 2: Daily conversation coaching
+
+User:
+
+```text
+英语老师，我今天状态不太好，但是我还是想坚持练英语。
+```
+
+Good response style:
+
+```text
+You could say:
+"I'm not feeling very good today, but I still want to keep practicing English."
+
+如果想更自然一点，也可以说：
+"I'm not in the best state today, but I still want to keep up my English practice."
+
+That is a very good sentence to practice. What happened today?
+```
+
+### Example 3: Research or study discussion
+
+User:
+
+```text
+English teacher, help me explain my research direction. I want say 我的研究更关注实际应用，而不是纯理论分析.
+```
+
+Good response style:
+
+```text
+You can say:
+"My research focuses more on practical applications than on purely theoretical analysis."
+
+如果想更口语一点，也可以说：
+"My research is more concerned with real-world applications than with pure theory."
+
+Now try to tell me what your research topic is in one or two English sentences.
+```
 
 ## Automatic Personalization
 
-This skill is built around lightweight personalization.
+One of the main goals of this skill is to become a more familiar teacher over time.
 
-Instead of expecting the user to maintain a study file manually, the intended behavior is:
+That means it should gradually learn things like:
 
-- the user installs the skill
-- the user starts chatting
-- the agent gradually learns stable preferences and recurring patterns
-- the agent becomes more familiar over time
+- what kinds of errors the learner repeats
+- how much Chinese support is actually needed
+- whether the learner prefers light correction or more direct correction
+- what topics the learner is trying to practice most
 
-If the environment supports saved learner information, the skill can automatically maintain a compact learner profile. That profile is not a transcript. It is a short working summary of things such as:
+The personalization should stay lightweight. It should not become a long transcript or a heavy log.
+
+## How To Make Long-Term Personalization Stronger
+
+The skill works immediately after installation. That part should feel frictionless.
+
+If you also want stronger long-term memory across chats, the most practical setup is to give the agent a fixed writable profile file.
+
+For example:
+
+- `D:\English\learner-profile.md`
+
+Then use a message like:
+
+```text
+Use $adaptive-english-companion to be my English teacher.
+Please create and maintain my learner profile at D:\English\learner-profile.md.
+```
+
+This gives the agent a stable place to save and update a small learner profile over time.
+
+If you do not do this, the skill still works normally. The difference is only that long-term personalization may be weaker depending on the environment.
+
+## What The Learner Profile Is
+
+The learner profile is not a transcript.
+
+It is a compact working summary of useful long-term information, such as:
 
 - current rough level
 - recurring error patterns
 - support preferences
 - current learning focus
 
-The profile should stay small. It exists to make the teacher feel more familiar, not to become a long report.
-
-## How To Enable Saved Learner Info
-
-The simplest practical setup is:
-
-1. Choose a writable file path such as `D:\English\learner-profile.md`
-2. In your first chat, ask the agent to use and maintain that file as your learner profile
-3. Keep reusing the same file over time
-
-Example:
-
-`Use $adaptive-english-companion to be my English teacher. Please create and maintain my learner profile at D:\English\learner-profile.md.`
-
-If you do this, the agent has a concrete place to save and update the profile. If you do not do this, the skill still works, but the long-term memory part may be weaker depending on the environment.
+It should stay short. Its purpose is to help the teacher feel more familiar, not to produce a report card.
 
 ## FAQ
 
@@ -104,11 +185,15 @@ Yes. Install it and start chatting.
 
 ### Do I need to create `learner-profile.md` myself?
 
-No. You do not need to write it yourself. But if you want reliable saved personalization, it helps to give the agent a fixed writable file path where it can create and maintain the profile for you.
+No. You do not need to write it yourself for the skill to be useful.
+
+If you want stronger long-term personalization, it helps to give the agent a fixed writable path so it can create and maintain the profile for you.
 
 ### Who decides when the profile should be updated?
 
-The agent decides. It should update only when it sees stable patterns, meaning repeated or high-confidence learner traits rather than one-off mistakes.
+The agent decides.
+
+It should update only when it sees stable patterns, meaning repeated or high-confidence learner traits rather than one-off mistakes.
 
 Examples of stable patterns:
 
@@ -117,7 +202,7 @@ Examples of stable patterns:
 - repeated preference for light correction
 - repeated need for Chinese support only on abstract content
 
-Examples of things that should usually not be stored as stable patterns:
+Examples of things that should usually not be stored:
 
 - one typo
 - one awkward sentence
@@ -125,7 +210,7 @@ Examples of things that should usually not be stored as stable patterns:
 
 ### Will this use a lot of tokens or become slow?
 
-Usually not, if the skill is used as intended.
+Usually not, if used as intended.
 
 The biggest sources of extra cost are:
 
@@ -133,23 +218,40 @@ The biggest sources of extra cost are:
 - confirming meaning on every turn
 - keeping the learner profile too long
 - updating the profile after every message
-- turning each correction into a full grammar lesson
+- turning every correction into a full grammar lesson
 
-This skill is designed to stay efficient by:
+This skill stays lighter by:
 
-- using Chinese support adaptively instead of on every line
+- using Chinese adaptively instead of on every line
 - keeping the learner profile short
 - updating the profile only when stable patterns appear
 - prioritizing compact reformulations over long explanations
 
-In practice, the skill itself is usually not the main source of token growth. Long bilingual outputs are.
+In practice, the biggest cost usually comes from long bilingual outputs, not from the existence of the skill itself.
 
-## Who It Is For
+## Who This Is For
 
 - Learners who dislike memorization-first English study
 - Chinese-speaking learners who naturally think in mixed Chinese and English
 - Students who want both daily English and academic English practice
-- Users who want a warm, companion-like teacher instead of an exam-style coach
+- Users who want a warm, familiar, companion-style teacher
+
+## Installation
+
+Current GitHub repo:
+
+- `https://github.com/Hyper-H/adaptive-english-companion`
+
+Install it through Codex skill installation flows, or copy the folder into your local Codex skills directory.
+
+After installation, restart Codex so the new skill can be discovered.
+
+## Notes for Users
+
+- `agents/openai.yaml` is product metadata for Codex
+- it helps Codex display the skill in the UI
+- normal users do not need to edit or configure it
+- installing the skill is enough
 
 ## Repository Layout
 
@@ -163,23 +265,6 @@ adaptive-english-companion/
     ├── profile-template.md
     └── update-rules.md
 ```
-
-## Notes for Users
-
-- `agents/openai.yaml` is product metadata for Codex
-- it helps Codex display the skill in the UI
-- normal users do not need to edit or configure it
-- installing the skill is enough
-
-## Installation
-
-Current GitHub repo:
-
-- `https://github.com/Hyper-H/adaptive-english-companion`
-
-Install it through Codex skill installation flows, or copy the folder into your local Codex skills directory.
-
-After installation, restart Codex so the new skill can be discovered.
 
 ## License
 
