@@ -6,6 +6,8 @@ A Codex skill for learners who want an English teacher that gradually becomes fa
 
 Adaptive English Companion is designed to feel less like a grammar examiner and more like a companion-style teacher. It accepts mixed Chinese-English input, helps the learner say what they really mean, offers natural English reformulations, and gradually adapts to recurring habits, weak points, and preferences over time through a learner profile that it reads, creates, and updates automatically.
 
+When the skill is active, replies should visibly begin with `ET:` by default so the learner can tell the skill is actually being used.
+
 ## What Makes It Different
 
 - It acts like a companion-style teacher, not an exam-style corrector
@@ -51,6 +53,10 @@ After installation, start with any of these:
 - `ET: help me express this idea naturally in English.`
 
 That is enough to begin.
+
+When the skill is working as intended, the agent's reply should normally begin with:
+
+- `ET:`
 
 ## Recommended Triggers
 
@@ -280,7 +286,7 @@ Current GitHub repo:
 
 Install it through Codex skill installation flows, or copy the folder into your local Codex skills directory.
 
-After installation, restart Codex so the new skill can be discovered.
+After installing a new skill, restart Codex so the new skill can be discovered and loaded. Without a restart, Codex may not pick up the newly installed skill immediately.
 
 ## Notes for Users
 

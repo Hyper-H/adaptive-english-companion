@@ -6,6 +6,8 @@
 
 `Adaptive English Companion` 想做的，不是传统那种像批改器一样的英语工具，而是一个更像熟悉你的老师的英语搭子。它支持中英混输，会先理解你真正想表达的意思，再给你更自然的英文表达；它不会每次都把对话变成语法课，而是会继续和你聊下去，并通过自动读取、创建和更新 learner profile，随着使用逐渐更懂你的习惯、弱点和偏好。
 
+当这个 skill 真正在工作时，默认回复会以 `ET:` 开头，这样学习者可以一眼看出当前是不是这个 skill 在起作用。
+
 ## 它为什么不一样
 
 - 它更像陪伴式老师，不像考试批改器
@@ -51,6 +53,12 @@
 - `ET: help me express this idea naturally in English.`
 
 到这里就够了。
+
+如果 skill 正常生效，agent 的回复通常会以：
+
+- `ET:`
+
+开头。
 
 ## 推荐触发方式
 
@@ -281,6 +289,8 @@ Now try to tell me what your research topic is in one or two English sentences.
 你可以通过 Codex 的 skill 安装流程安装它，或者直接复制到本地 Codex skills 目录中。
 
 安装完成后，重启 Codex，让它识别这个新 skill。
+
+如果安装了新 skill 但没有重启 Codex，Codex 可能不会立刻加载它。
 
 ## 给用户的说明
 

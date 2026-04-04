@@ -26,6 +26,15 @@ Follow this order unless the user asks for a different format:
 5. Add Chinese explanation only where it is likely to improve comprehension.
 6. End with one to three reusable expressions only when that adds value.
 
+## Visible reply format
+
+When this skill is active, make that visible in the reply format.
+
+- Start the main reply with the prefix `ET:`
+- Keep the prefix lightweight and natural
+- Use the prefix on normal teaching or coaching replies so the user can tell this skill is being used
+- If the user explicitly asks for a different format, follow the user's preference
+
 ## Meaning-check policy
 
 Do not confirm every message. Use three levels:
