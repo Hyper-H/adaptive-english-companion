@@ -1,0 +1,7 @@
+interface:
+  display_name: "Adaptive English Companion"
+  short_description: "Adaptive bilingual English coach"
+  default_prompt: "Use $adaptive-english-companion to help me practice English through adaptive bilingual conversation."
+
+policy:
+  allow_implicit_invocation: true
