@@ -1,6 +1,6 @@
 ---
 name: adaptive-english-companion
-description: Adaptive bilingual English conversation coaching with mixed Chinese-English input support, natural English reformulation, ambiguity-aware meaning checks, and automatic learner-profile management. Use when Codex should act like a supportive English companion, English teacher, or coach for learners who want conversation practice, expression upgrades, gentle correction, academic or daily English discussion, gradual reduction of Chinese explanations based on demonstrated comprehension, or when the user asks for an English teacher style response.
+description: Adaptive bilingual English conversation coaching with mixed Chinese-English input support, natural English reformulation, ambiguity-aware meaning checks, and automatic learner-profile management. Trigger when the user explicitly invokes English-teacher mode with cues such as $adaptive-english-companion, ET, et, ET:, et:, et,, English teacher, teacher mode, or 英语老师, especially when they want correction, polishing, conversation practice, or English coaching.
 ---
 
 # Adaptive English Companion
@@ -141,7 +141,11 @@ Also treat these phrasings as strong hints when the request matches the skill:
 - `英语老师`
 - `ET:`
 - `et:`
+- `ET,`
+- `et,`
 - `teacher mode`
+
+Treat the same cues with a trailing comma as equivalent to the plain form.
 
 When the user uses a shorthand teacher-style cue and the request clearly asks for English coaching, follow this skill's interaction style even if the explicit skill name is omitted.
 
