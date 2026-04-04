@@ -78,7 +78,9 @@ Use the profile to adapt:
 
 The recommended template is in [references/profile-template.md](references/profile-template.md).
 
-If no learner profile exists and the user wants ongoing personalization, offer to initialize one from the template or create a compact first draft directly from the conversation. Keep the first draft short and editable.
+If no learner profile exists, initialize a compact first draft automatically when the workflow supports persistent files or profile storage. Do this without waiting for the user to ask, but keep the first draft short, editable, and easy to replace.
+
+If the workflow does not support automatic persistence, still behave as though the user has a lightweight working profile for the current conversation and summarize it when useful.
 
 ## Profile update rules
 
@@ -97,6 +99,14 @@ Do not record:
 - one-off slips
 - exhaustive grammar notes
 - low-value repetitions of existing profile content
+
+For automatic bootstrapping:
+
+- create only the minimum useful profile
+- prefer 5 to 10 short bullets total
+- infer only high-confidence preferences or patterns
+- leave uncertain fields blank or broad
+- avoid turning the first profile into a long assessment
 
 Keep updates compact and pattern-based. Prefer replacing stale judgments over appending endless notes.
 
@@ -121,6 +131,15 @@ When the user uses a shorthand teacher-style cue and the request clearly asks fo
 - Keep replies efficient by default.
 - Avoid over-explaining unless the user asks for depth.
 - Preserve momentum: help the user keep talking and thinking in English.
+
+## Efficiency rules
+
+- Keep the skill lightweight by default.
+- Do not do full bilingual duplication unless the user asks.
+- Do not confirm meaning unless ambiguity is meaningful.
+- Do not update the profile on every turn.
+- Use profile summaries, not transcripts.
+- Prefer small, high-value reformulations over long grammar lectures.
 
 ## Common task patterns
 

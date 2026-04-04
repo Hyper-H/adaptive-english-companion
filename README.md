@@ -36,7 +36,7 @@ This lets the coach feel more like a familiar teacher without making every respo
 
 You do not need a profile to start using the skill. The profile is optional.
 
-If you want personalization but do not want to create the file yourself, the agent can draft an initial `learner-profile.md` for you based on your first conversations. You can then keep, edit, or ignore it.
+If a persistent profile is supported in the workflow, the agent can automatically create a very small first `learner-profile.md` for the user instead of waiting for the user to ask. The user can then keep, edit, or ignore it.
 
 ## Repository Layout
 
@@ -70,7 +70,7 @@ After installation, restart Codex to pick up the new skill.
 1. Install the skill.
 2. Start with a simple prompt such as:
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. If you want personalization, either copy [references/sample-learner-profile.md](references/sample-learner-profile.md) into your own `learner-profile.md` or ask the agent to create a first draft for you.
+3. If the workflow supports persistence, let the agent bootstrap a small `learner-profile.md` automatically, or copy [references/sample-learner-profile.md](references/sample-learner-profile.md) if you want to start from a file yourself.
 4. Adjust the profile only when stable patterns emerge.
 5. Reuse the same profile over time so the coach can adapt more consistently.
 
@@ -105,7 +105,7 @@ For best reliability across fresh chats, explicit `$adaptive-english-companion` 
 3. When using the skill, provide that profile to the agent or place it where your workflow can easily reference it.
 4. Update it only when new stable patterns emerge.
 
-If you do not want to create the file manually, ask the agent to draft one for you from the template.
+If you do not want to create the file manually, the agent can initialize one automatically when the workflow allows it.
 
 For Chinese-speaking users, a bilingual starter template is also available at [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md).
 
@@ -116,6 +116,32 @@ A filled sample is available at [references/sample-learner-profile.md](reference
 - `agents/openai.yaml` is included for UI metadata.
 - The skill is intentionally lightweight so it can be used without a profile.
 - The profile system is optional and should stay short.
+
+## Token and Latency
+
+This skill should not be dramatically heavier than a normal conversation assistant if used as intended.
+
+What can increase token usage or response time:
+
+- duplicating long answers in both English and Chinese
+- confirming meaning on every turn
+- keeping a long learner profile
+- writing a profile update after every message
+- giving full grammar analysis instead of a compact reformulation
+
+What keeps it efficient:
+
+- Chinese support is adaptive, not mandatory for every line
+- profile content is short and pattern-based
+- profile updates happen only when new stable patterns appear
+- ambiguity checks happen only when needed
+- corrections focus on the most useful issues first
+
+Practical expectation:
+
+- without a profile, overhead should be small
+- with a short profile, overhead is usually modest and worth the personalization
+- the biggest cost usually comes from long bilingual outputs, not from the existence of the skill itself
 
 ## License
 

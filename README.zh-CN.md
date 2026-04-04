@@ -33,7 +33,7 @@
 
 不过你不需要先有 profile 才能开始用，这个 profile 是可选的。
 
-如果你想要个性化，但不想自己手动建文件，也可以直接让 agent 根据前几轮对话先帮你生成一个初版 `learner-profile.md`，你之后再决定要不要继续用和修改。
+如果当前工作流支持持久化文件或 profile 存储，那么 agent 也可以在用户直接开始使用时，自动帮用户初始化一个很小的 `learner-profile.md`，而不需要等用户先主动提出。之后用户再决定要不要继续用和修改。
 
 ## 仓库结构
 
@@ -67,7 +67,7 @@ adaptive-english-companion/
 1. 先安装 skill。
 2. 用下面这样的提示词开第一轮：
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. 如果你想要个性化体验，可以把 [references/sample-learner-profile.md](references/sample-learner-profile.md) 复制成你自己的 `learner-profile.md`，也可以直接让 agent 先帮你生成一个初版。
+3. 如果当前工作流支持持久化，可以让 agent 自动初始化一个小型 `learner-profile.md`；如果你想手动开始，也可以直接复制 [references/sample-learner-profile.md](references/sample-learner-profile.md)。
 4. 只有出现稳定模式时再更新 profile。
 5. 长期复用同一个 profile，这样这个教练才会越来越“懂你”。
 
@@ -102,7 +102,7 @@ adaptive-english-companion/
 3. 使用 skill 时，把这个 profile 一并提供给 agent，或者放在你工作流里容易引用的位置。
 4. 只有在出现新的稳定模式时再更新，不要把它写成流水账。
 
-如果你不想自己手动创建，也可以直接让 agent 按模板帮你先生成一版。
+如果你不想自己手动创建，在支持持久化的工作流里，agent 也可以自动先初始化一版。
 
 如果你更习惯中文填写，也可以直接使用 [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md)。
 
@@ -113,6 +113,32 @@ adaptive-english-companion/
 - 仓库里已经包含 `agents/openai.yaml`，方便在 UI 中显示 skill 信息。
 - 整个 skill 被刻意设计得比较轻量，没有 profile 也能直接用。
 - profile 系统是可选的，而且应该始终保持简短。
+
+## Token 与响应时间
+
+如果按这个项目的设计方式使用，它不应该比普通对话 assistant 重很多。
+
+真正会明显增加 token 或响应时间的，通常是这些情况：
+
+- 一长段内容同时完整输出英文和中文
+- 每一轮都先确认意思再继续
+- learner profile 写得太长
+- 每条消息都更新 profile
+- 把每次纠错都展开成完整语法讲解
+
+这个 skill 为了保持轻量，默认用了这些优化策略：
+
+- 中文解释是自适应的，不是每句必带
+- profile 保持短小，只记录模式，不记录流水账
+- 只有出现新的稳定模式时才更新 profile
+- 只有歧义明显时才确认意思
+- 纠错优先解决最有价值的问题
+
+实际可以这样理解：
+
+- 没有 profile 时，额外开销通常很小
+- 有一个简短 profile 时，额外开销通常是可接受的，而且个性化收益更高
+- 真正最耗 token 的，通常不是 skill 本身，而是长篇双语重复输出
 
 ## 许可证
 
