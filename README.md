@@ -25,7 +25,7 @@ After installation, the intended experience is simple:
 
 You do not need to manually set up a profile before the skill becomes useful.
 
-When the environment can save learner information, the skill can automatically create and maintain a small learner profile in the background. When that is not available, the skill still works normally as an adaptive conversation coach.
+When learner information can be saved to a writable file, the skill can maintain a small learner profile in the background. When that is not available, the skill still works normally as an adaptive conversation coach.
 
 ## What It Does
 
@@ -82,6 +82,20 @@ If the environment supports saved learner information, the skill can automatical
 
 The profile should stay small. It exists to make the teacher feel more familiar, not to become a long report.
 
+## How To Enable Saved Learner Info
+
+The simplest practical setup is:
+
+1. Choose a writable file path such as `D:\English\learner-profile.md`
+2. In your first chat, ask the agent to use and maintain that file as your learner profile
+3. Keep reusing the same file over time
+
+Example:
+
+`Use $adaptive-english-companion to be my English teacher. Please create and maintain my learner profile at D:\English\learner-profile.md.`
+
+If you do this, the agent has a concrete place to save and update the profile. If you do not do this, the skill still works, but the long-term memory part may be weaker depending on the environment.
+
 ## FAQ
 
 ### Can I use it immediately after installation?
@@ -90,7 +104,7 @@ Yes. Install it and start chatting.
 
 ### Do I need to create `learner-profile.md` myself?
 
-No. The skill is designed so the user does not need to manually create personal configuration before using it.
+No. You do not need to write it yourself. But if you want reliable saved personalization, it helps to give the agent a fixed writable file path where it can create and maintain the profile for you.
 
 ### Who decides when the profile should be updated?
 
