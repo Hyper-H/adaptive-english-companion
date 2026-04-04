@@ -4,6 +4,14 @@
 
 `Adaptive English Companion` 是一个面向 Codex 的英语学习 skill，适合不想走传统应试背词路线、而希望通过对话逐步提升英语表达能力的学习者。它支持中英混输，会优先理解你的真实意思，再给出更自然的英文表达，并且只在必要时提供中文解释。
 
+## 一眼看懂
+
+- 安装后就能直接开始使用
+- 最稳的触发方式是 `$adaptive-english-companion`
+- 更轻便的启动写法可以用 `English teacher` 或 `ET:`
+- 如果环境支持持久化，agent 可以自动初始化一个很小的 learner profile
+- 只要 profile 保持简短、双语输出不过度，整体额外开销通常不大
+
 这个 skill 同时支持两种使用方式：
 
 - 通用模式：任何人安装后都可以直接开始练习。
@@ -30,6 +38,10 @@
 - 最近重点想练的内容
 
 这样做的好处是：agent 会越来越像一个熟悉你的陪伴式老师，但不会因为保存太多内容而浪费太多 token。
+
+不过你不需要先有 profile 才能开始用，这个 profile 是可选的。
+
+如果当前工作流支持持久化文件或 profile 存储，那么 agent 也可以在用户直接开始使用时，自动帮用户初始化一个很小的 `learner-profile.md`，而不需要等用户先主动提出。之后用户再决定要不要继续用和修改。
 
 ## 仓库结构
 
@@ -63,9 +75,45 @@ adaptive-english-companion/
 1. 先安装 skill。
 2. 用下面这样的提示词开第一轮：
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. 如果你想要个性化体验，就把 [references/sample-learner-profile.md](references/sample-learner-profile.md) 复制成你自己的 `learner-profile.md`。
+3. 如果当前工作流支持持久化，可以让 agent 自动初始化一个小型 `learner-profile.md`；如果你想手动开始，也可以直接复制 [references/sample-learner-profile.md](references/sample-learner-profile.md)。
 4. 只有出现稳定模式时再更新 profile。
 5. 长期复用同一个 profile，这样这个教练才会越来越“懂你”。
+
+## 常见问题
+
+### 安装后能直接用吗？
+
+可以。即使你没有手动创建任何配置文件，这个 skill 也能直接工作。
+
+### `learner-profile.md` 必须我自己建吗？
+
+不必须。如果当前工作流支持持久化，agent 可以自动创建一个很短的初版 profile。即使当前环境不能保存 profile，这个 skill 也仍然可以正常使用。
+
+### “稳定模式”是谁判断的？
+
+是 agent 自己判断，不是等用户主动说“这是稳定模式”。
+
+这里的稳定模式，指的是“重复出现”或者“高置信度”的学习者特征，而不是一次性小错误。
+
+通常算稳定模式的情况：
+
+- 长句经常出现意思漂移
+- 经常把中文表达逻辑直接搬进英文
+- 只有抽象内容时才稳定需要中文解释
+- 明显偏好轻纠错、少打断
+
+通常不算稳定模式的情况：
+
+- 一次拼写错误
+- 一句不够自然
+- 一次临时时态用错
+
+### 我每次都得输入完整 skill 名吗？
+
+不用，但在新对话里完整写 skill 名是最稳的。
+
+- 最稳：`$adaptive-english-companion`
+- 更轻便：`English teacher` 或 `ET:`
 
 ## 推荐用法
 
@@ -75,6 +123,14 @@ adaptive-english-companion/
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
 - `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
+
+更短、更接近自然说法的启动方式也可以这样写：
+
+- `English teacher, help me say this naturally in English.`
+- `ET: I want to practice speaking through mixed Chinese-English conversation.`
+- `ET: please create a first learner profile for me and then coach me with it.`
+
+不过如果你希望在新对话里最稳定地触发这个 skill，显式写 `$adaptive-english-companion` 仍然是最稳的方式。
 
 ## 适合谁
 
@@ -90,6 +146,8 @@ adaptive-english-companion/
 3. 使用 skill 时，把这个 profile 一并提供给 agent，或者放在你工作流里容易引用的位置。
 4. 只有在出现新的稳定模式时再更新，不要把它写成流水账。
 
+如果你不想自己手动创建，在支持持久化的工作流里，agent 也可以自动先初始化一版。
+
 如果你更习惯中文填写，也可以直接使用 [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md)。
 
 如果你想直接看一份已经填好的示例，也可以参考 [references/sample-learner-profile.md](references/sample-learner-profile.md)。
@@ -99,6 +157,43 @@ adaptive-english-companion/
 - 仓库里已经包含 `agents/openai.yaml`，方便在 UI 中显示 skill 信息。
 - 整个 skill 被刻意设计得比较轻量，没有 profile 也能直接用。
 - profile 系统是可选的，而且应该始终保持简短。
+
+## Token 与响应时间
+
+如果按这个项目的设计方式使用，它不应该比普通对话 assistant 重很多。
+
+真正会明显增加 token 或响应时间的，通常是这些情况：
+
+- 一长段内容同时完整输出英文和中文
+- 每一轮都先确认意思再继续
+- learner profile 写得太长
+- 每条消息都更新 profile
+- 把每次纠错都展开成完整语法讲解
+
+这个 skill 为了保持轻量，默认用了这些优化策略：
+
+- 中文解释是自适应的，不是每句必带
+- profile 保持短小，只记录模式，不记录流水账
+- 只有出现新的稳定模式时才更新 profile
+- 只有歧义明显时才确认意思
+- 纠错优先解决最有价值的问题
+
+实际可以这样理解：
+
+- 没有 profile 时，额外开销通常很小
+- 有一个简短 profile 时，额外开销通常是可接受的，而且个性化收益更高
+- 真正最耗 token 的，通常不是 skill 本身，而是长篇双语重复输出
+
+## 日常推荐用法
+
+如果是新开对话，推荐这样写：
+
+- `Use $adaptive-english-companion to be my English teacher.`
+
+如果你已经熟悉这种用法，也可以用更短的写法：
+
+- `ET: help me practice through mixed Chinese-English conversation.`
+- `English teacher, help me say this naturally in English.`
 
 ## 许可证
 
