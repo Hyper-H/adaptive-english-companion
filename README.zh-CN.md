@@ -8,14 +8,11 @@
 
 - 安装后就能直接开始使用
 - 最稳的触发方式是 `$adaptive-english-companion`
-- 更轻便的启动写法可以用 `English teacher` 或 `ET:`
+- 更轻便的启动写法可以用 `English teacher`、`英语老师` 或 `ET:`
 - 如果环境支持持久化，agent 可以自动初始化一个很小的 learner profile
 - 只要 profile 保持简短、双语输出不过度，整体额外开销通常不大
 
-这个 skill 同时支持两种使用方式：
-
-- 通用模式：任何人安装后都可以直接开始练习。
-- 个性化模式：为某个学习者维护一份很轻量的 profile，让 agent 逐渐更熟悉这个人的习惯、薄弱点和解释偏好。
+这个 skill 的设计目标是：用户安装后就能直接用，同时个性化能力由 agent 自动接管。
 
 ## 它能做什么
 
@@ -26,11 +23,11 @@
 - 当学习者明显能跟上时，减少不必要的中文解释
 - 同时支持日常表达、学习交流和科研讨论
 
-## 为什么要有 Profile
+## 自动个性化
 
 这里的 profile 不是聊天记录，也不是把每次犯错都保存下来。
 
-它更像一张简短的“学习者画像”，只记录长期有价值的信息，例如：
+它更像一张简短的“学习者画像”，用来让这个英语教练逐渐更熟悉用户。它只记录长期有价值的信息，例如：
 
 - 当前大致水平
 - 稳定出现的错误模式
@@ -39,9 +36,16 @@
 
 这样做的好处是：agent 会越来越像一个熟悉你的陪伴式老师，但不会因为保存太多内容而浪费太多 token。
 
-不过你不需要先有 profile 才能开始用，这个 profile 是可选的。
+你不需要自己先创建、维护或管理 profile。
 
-如果当前工作流支持持久化文件或 profile 存储，那么 agent 也可以在用户直接开始使用时，自动帮用户初始化一个很小的 `learner-profile.md`，而不需要等用户先主动提出。之后用户再决定要不要继续用和修改。
+推荐的使用体验应该是：
+
+- 用户安装 skill
+- 用户直接开始聊天
+- 如果环境支持持久化，agent 自动创建一个很小的 profile
+- 之后只有在出现稳定模式时才更新
+
+如果当前环境不支持持久化，这个 skill 也仍然可以正常工作。
 
 ## 仓库结构
 
@@ -75,9 +79,8 @@ adaptive-english-companion/
 1. 先安装 skill。
 2. 用下面这样的提示词开第一轮：
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. 如果当前工作流支持持久化，可以让 agent 自动初始化一个小型 `learner-profile.md`；如果你想手动开始，也可以直接复制 [references/sample-learner-profile.md](references/sample-learner-profile.md)。
-4. 只有出现稳定模式时再更新 profile。
-5. 长期复用同一个 profile，这样这个教练才会越来越“懂你”。
+3. 如果当前工作流支持持久化，让 agent 自动初始化一个小型 learner profile。
+4. 之后正常使用即可，agent 只会在出现稳定模式时更新它。
 
 ## 常见问题
 
@@ -87,7 +90,7 @@ adaptive-english-companion/
 
 ### `learner-profile.md` 必须我自己建吗？
 
-不必须。如果当前工作流支持持久化，agent 可以自动创建一个很短的初版 profile。即使当前环境不能保存 profile，这个 skill 也仍然可以正常使用。
+不必须。这个项目预期的体验就是：用户安装后直接开始用。如果当前工作流支持持久化，agent 会自动创建一个很短的初版 profile。即使当前环境不能保存 profile，这个 skill 也仍然可以正常使用。
 
 ### “稳定模式”是谁判断的？
 
@@ -113,7 +116,7 @@ adaptive-english-companion/
 不用，但在新对话里完整写 skill 名是最稳的。
 
 - 最稳：`$adaptive-english-companion`
-- 更轻便：`English teacher` 或 `ET:`
+- 更轻便：`English teacher`、`英语老师` 或 `ET:`
 
 ## 推荐用法
 
@@ -122,13 +125,12 @@ adaptive-english-companion/
 - `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
-- `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
 
 更短、更接近自然说法的启动方式也可以这样写：
 
 - `English teacher, help me say this naturally in English.`
+- `英语老师，帮我把这句话说得更自然。`
 - `ET: I want to practice speaking through mixed Chinese-English conversation.`
-- `ET: please create a first learner profile for me and then coach me with it.`
 
 不过如果你希望在新对话里最稳定地触发这个 skill，显式写 `$adaptive-english-companion` 仍然是最稳的方式。
 
@@ -139,24 +141,12 @@ adaptive-english-companion/
 - 既想练日常表达，也想练学习或科研英语的学生
 - 希望 agent 高效陪练，而不是每句话都被过度讲解的用户
 
-## 个性化配置
-
-1. 将 [references/profile-template.md](references/profile-template.md) 复制成你自己的文件，比如 `learner-profile.md`。
-2. 先填入少量偏好和当前水平信息。
-3. 使用 skill 时，把这个 profile 一并提供给 agent，或者放在你工作流里容易引用的位置。
-4. 只有在出现新的稳定模式时再更新，不要把它写成流水账。
-
-如果你不想自己手动创建，在支持持久化的工作流里，agent 也可以自动先初始化一版。
-
-如果你更习惯中文填写，也可以直接使用 [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md)。
-
-如果你想直接看一份已经填好的示例，也可以参考 [references/sample-learner-profile.md](references/sample-learner-profile.md)。
-
 ## 发布说明
 
-- 仓库里已经包含 `agents/openai.yaml`，方便在 UI 中显示 skill 信息。
-- 整个 skill 被刻意设计得比较轻量，没有 profile 也能直接用。
-- profile 系统是可选的，而且应该始终保持简短。
+- 仓库里的 `agents/openai.yaml` 是给 Codex 产品读取的元数据文件。
+- 它主要用来让 Codex 在界面里显示 skill 名称、简介和默认提示词。
+- 普通用户不需要自己修改或配置这个文件。
+- 对用户来说，安装 skill 就够了，不需要再额外设置它。
 
 ## Token 与响应时间
 
@@ -194,7 +184,20 @@ adaptive-english-companion/
 
 - `ET: help me practice through mixed Chinese-English conversation.`
 - `English teacher, help me say this naturally in English.`
+- `英语老师，和我一起练英语。`
 
 ## 许可证
 
-如果你准备公开发布并允许别人复用或修改，建议在正式发布前补一个许可证。MIT 是一个比较适合公开分享的默认选择。
+这个仓库现在已经带了 MIT 许可证。
+
+MIT 的意思可以简单理解为：
+
+- 别人可以使用、复制、修改和分发你的项目
+- 但他们需要保留你的版权声明和许可证文本
+- 你不承诺提供担保、售后或责任承担
+
+作为开发者，你通常只需要：
+
+- 保留仓库里的 `LICENSE` 文件
+- 保留其中的版权信息
+- 除非你明确想换授权方式，否则继续沿用这个许可证就行

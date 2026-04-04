@@ -11,14 +11,11 @@ Adaptive English Companion is a Codex skill for learners who want to improve Eng
 
 - Install the skill and start using it immediately
 - Use `$adaptive-english-companion` for the most reliable trigger
-- Use `English teacher` or `ET:` as a lighter shorthand when convenient
+- Use `English teacher`, `英语老师`, or `ET:` as a lighter shorthand when convenient
 - Let the agent auto-bootstrap a tiny learner profile when persistence is available
 - Expect modest overhead when the profile stays short and bilingual output stays selective
 
-The skill is designed for two use cases:
-
-- General use: anyone can install the skill and start practicing immediately.
-- Personalized use: a learner can keep a lightweight profile so the coach gradually adapts to their habits, weak points, and preferred support level.
+The skill is designed to be install-and-use by default while still supporting personalization automatically.
 
 ## What It Does
 
@@ -29,9 +26,9 @@ The skill is designed for two use cases:
 - Reduces unnecessary Chinese explanations when the learner is clearly keeping up
 - Supports both daily conversation and study or research discussion
 
-## Why It Uses a Profile
+## Automatic Personalization
 
-The profile is not a transcript. It is a short learner snapshot.
+The profile is not a transcript. It is a short learner snapshot used to help the coach gradually adapt.
 
 It stores only durable, high-value information such as:
 
@@ -42,9 +39,16 @@ It stores only durable, high-value information such as:
 
 This lets the coach feel more like a familiar teacher without making every response long or expensive.
 
-You do not need a profile to start using the skill. The profile is optional.
+You do not need to create or manage a profile yourself.
 
-If a persistent profile is supported in the workflow, the agent can automatically create a very small first `learner-profile.md` for the user instead of waiting for the user to ask. The user can then keep, edit, or ignore it.
+The intended behavior is:
+
+- the user installs the skill
+- the user starts chatting
+- if persistence is available, the agent auto-creates a very small profile
+- the agent updates it only when durable patterns appear
+
+If persistence is not available, the skill should still work normally without a saved profile.
 
 ## Repository Layout
 
@@ -78,9 +82,8 @@ After installation, restart Codex to pick up the new skill.
 1. Install the skill.
 2. Start with a simple prompt such as:
    `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
-3. If the workflow supports persistence, let the agent bootstrap a small `learner-profile.md` automatically, or copy [references/sample-learner-profile.md](references/sample-learner-profile.md) if you want to start from a file yourself.
-4. Adjust the profile only when stable patterns emerge.
-5. Reuse the same profile over time so the coach can adapt more consistently.
+3. If persistence is available, let the agent bootstrap a small learner profile automatically.
+4. Keep using the skill normally and let the agent update the profile only when stable patterns emerge.
 
 ## FAQ
 
@@ -90,7 +93,7 @@ Yes. The skill works without any manual setup file.
 
 ### Do I need to create `learner-profile.md` myself?
 
-No. If the workflow supports persistence, the agent can create a compact first profile automatically. If persistence is not available, the skill can still work without a saved profile.
+No. The intended experience is that the user installs the skill and starts using it directly. If the workflow supports persistence, the agent can create a compact first profile automatically. If persistence is not available, the skill can still work without a saved profile.
 
 ### Who decides when a "stable pattern" should update the profile?
 
@@ -114,7 +117,7 @@ Typical non-stable patterns:
 No, but it is the safest option in a fresh chat.
 
 - Most reliable: `$adaptive-english-companion`
-- Lighter shorthand: `English teacher` or `ET:`
+- Lighter shorthand: `English teacher`, `英语老师`, or `ET:`
 
 ## Suggested Usage
 
@@ -123,13 +126,12 @@ Example prompts:
 - `Use $adaptive-english-companion to practice English with me through mixed Chinese-English conversation.`
 - `Use $adaptive-english-companion to help me express this idea naturally in English.`
 - `Use $adaptive-english-companion to discuss my research topic and explain difficult parts in Chinese only when needed.`
-- `Use $adaptive-english-companion and this learner profile to coach me like a familiar English teacher who adapts over time.`
 
 Shorter prompts that can work well in practice:
 
 - `English teacher, help me say this naturally in English.`
+- `英语老师，帮我把这句话说得更自然。`
 - `ET: I want to practice speaking through mixed Chinese-English conversation.`
-- `ET: please create a first learner profile for me and then coach me with it.`
 
 For best reliability across fresh chats, explicit `$adaptive-english-companion` invocation is still the safest option.
 
@@ -140,24 +142,12 @@ For best reliability across fresh chats, explicit `$adaptive-english-companion` 
 - Students who want daily conversation practice without giving up academic English
 - Users who want a coach that stays efficient instead of over-explaining every sentence
 
-## Personalized Setup
-
-1. Copy [references/profile-template.md](references/profile-template.md) to a learner-specific file such as `learner-profile.md`.
-2. Fill in a few starting preferences and level notes.
-3. When using the skill, provide that profile to the agent or place it where your workflow can easily reference it.
-4. Update it only when new stable patterns emerge.
-
-If you do not want to create the file manually, the agent can initialize one automatically when the workflow allows it.
-
-For Chinese-speaking users, a bilingual starter template is also available at [references/profile-template.zh-CN.md](references/profile-template.zh-CN.md).
-
-A filled sample is available at [references/sample-learner-profile.md](references/sample-learner-profile.md).
-
 ## Publishing Notes
 
-- `agents/openai.yaml` is included for UI metadata.
-- The skill is intentionally lightweight so it can be used without a profile.
-- The profile system is optional and should stay short.
+- `agents/openai.yaml` is included as product metadata for Codex.
+- It helps Codex display the skill name, short description, and default prompt in the UI.
+- Normal users do not need to edit or configure it.
+- Installing the skill is enough to use it.
 
 ## Token and Latency
 
@@ -195,7 +185,20 @@ For a lighter shorthand once you are comfortable:
 
 - `ET: help me practice through mixed Chinese-English conversation.`
 - `English teacher, help me say this naturally in English.`
+- `英语老师，和我一起练英语。`
 
 ## License
 
-Choose a license before public release if you want others to reuse or modify the repository. MIT is a simple default for open sharing.
+This repository already includes the MIT License.
+
+MIT means:
+
+- other people can use, copy, modify, and share your project
+- they should keep your copyright notice and license text
+- you do not promise warranty or support
+
+As the developer, you usually only need to:
+
+- keep the `LICENSE` file in the repository
+- keep your copyright line in it
+- continue using the same license unless you intentionally want to change the sharing terms
