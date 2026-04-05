@@ -29,6 +29,9 @@ Maintain a single canonical file:
 - Prefer short bullets over paragraphs
 - Keep the full profile compact
 - Aim for roughly 8 to 15 bullets total outside headings
+- Keep most headings to 0 to 2 bullets
+- Usually stay under about 250 English words total
 - Replace stale judgments instead of endlessly appending
 - Treat all profile content as revisable
 - Favor notes that help decide whether Chinese explanation is needed
+- Delete placeholders and redundant bullets instead of preserving template shape

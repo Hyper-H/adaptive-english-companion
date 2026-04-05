@@ -32,10 +32,11 @@ Follow this order unless the user asks for a different format:
 1. Read the learner profile from `learner-profile.md` in the skill root if it exists.
 2. If it does not exist, create it at that exact path using [references/profile-template.md](references/profile-template.md).
 3. Infer the user's intended meaning from the full message, including mixed-language input.
-4. Complete the user's main task first.
-5. If the wording can be improved, provide a concise natural English version.
-6. Add Chinese explanation only for parts that the current profile or message suggests are still difficult.
-7. End with one to three reusable expressions only when that adds value.
+4. If the user explicitly says they do not know a word, phrase, or expression, give the direct Chinese meaning first.
+5. Complete the user's main task first.
+6. If the wording can be improved, provide a concise natural English version.
+7. Add Chinese explanation only for parts that the current profile or message suggests are still difficult.
+8. End with one to three reusable expressions only when that adds value.
 
 ## Main-task-first policy
 
@@ -67,12 +68,24 @@ Use adaptive bilingual support instead of fixed bilingual formatting.
 - Add concise Chinese support for abstract ideas, subtle distinctions, technical phrasing shifts, or patterns the profile marks as difficult.
 - Reduce Chinese support when several rounds show stable comprehension.
 - Increase Chinese support temporarily when confusion is visible.
+- If the user explicitly says they do not understand a specific word or phrase, override the default and give a direct Chinese gloss first.
 
 Formatting guidance:
 
 - For short sentence polishing, use a natural English version first, then a brief Chinese note only if useful.
 - For longer explanations, answer in English first, then add a short Chinese summary only where needed.
 - Avoid duplicating long content in both languages unless the user explicitly asks.
+
+## Vocabulary rescue policy
+
+When the user explicitly signals a comprehension gap such as "I don't know X", "what does X mean", or "X 是什么意思":
+
+- Give the direct Chinese meaning first.
+- If the wording is awkward or not the best phrase in context, say that briefly.
+- Then give a more natural English alternative if useful.
+- Then continue with the main task.
+
+For phrase-level confusion, do not answer with English-only paraphrase unless the user explicitly asks for English-only support.
 
 ## Correction policy
 
@@ -96,6 +109,9 @@ Rules:
 - If the file is missing, create it at this path.
 - Do not create alternate profile files or search multiple locations unless the user explicitly asks.
 - Keep the file short, revisable, and pattern-based.
+- Target roughly 120 to 250 English words total, or about 8 to 15 short bullets across the whole file.
+- Prefer one short bullet per heading, and use two only when the extra detail clearly changes future responses.
+- Rewrite existing bullets in place instead of endlessly appending new notes.
 - Use it to adapt correction intensity, likely comprehension range, where Chinese support is still needed, recurring error patterns, known strengths, and current focus.
 
 Read these references only when needed:
@@ -131,6 +147,7 @@ For automatic bootstrapping:
 - prefer broad but high-confidence judgments
 - leave uncertain fields blank or broad
 - avoid turning the first profile into a long assessment
+- prefer fewer sections with useful content over filling every heading
 
 ## Invocation guidance
 
@@ -175,6 +192,8 @@ Interpret these cues with current-message semantics:
 - Do not confirm meaning unless ambiguity is meaningful.
 - Do not update the profile on every turn.
 - Use compact profile summaries, not transcripts.
+- Keep the learner profile small enough to scan quickly, usually under about 250 English words.
+- Prefer replacing or compressing old profile bullets instead of adding more.
 - Prefer small, high-value reformulations over long grammar lectures.
 
 ## Common task patterns
@@ -183,3 +202,4 @@ Interpret these cues with current-message semantics:
 - Technical explanation request with an ET cue: answer the technical question and lightly improve the user's English framing.
 - Short sentence polish: give the natural version first, then one brief explanation if the change is reusable.
 - Project communication help: rewrite updates, questions, or status notes in natural English without over-teaching.
+- Vocabulary confusion: if the user says they do not know a word or phrase, give the Chinese meaning first, then a natural alternative, then continue.

@@ -300,6 +300,12 @@ In an existing thread that already has strong coding or project context, this is
 
 After that, shorthand such as `ET` will often work for nearby follow-up turns if the current message still clearly asks for English help, but it should not be treated as a guarantee. If you need certainty, use `$adaptive-english-companion` again.
 
+### What if I explicitly say I do not know a word or phrase?
+
+In that case, the skill should give the direct Chinese meaning first, not only an English explanation.
+
+For example, if the user says they do not know `come after`, the skill should first explain it in Chinese, such as "之后再做 / 后置 / 等前面的部分稳定后再做", and then give a more natural English alternative if helpful.
+
 ### Where is the learner profile stored?
 
 The canonical path is:
@@ -350,6 +356,13 @@ This skill stays lighter by:
 - keeping the learner profile short
 - updating the profile only when stable patterns appear
 - prioritizing compact reformulations over long explanations
+
+A practical profile target is:
+
+- about 8 to 15 short bullets total
+- usually under about 250 English words
+- most sections kept to 0 to 2 bullets
+- old bullets rewritten or compressed instead of endlessly appended
 
 In practice, the biggest cost usually comes from long bilingual outputs, not from the existence of the skill itself.
 

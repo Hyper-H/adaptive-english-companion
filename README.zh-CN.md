@@ -302,6 +302,12 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 后续几轮里，如果当前消息仍然明显是在要英语帮助，`ET` 这种 shorthand 往往也能继续工作；但它不应该被当成绝对保证。如果你这次必须稳，就再写一次 `$adaptive-english-companion`。
 
+### 如果我明确说我不认识某个词或短语，会怎样？
+
+这种情况下，这个 skill 应该先给中文释义，而不是只给英文解释。
+
+比如用户明确说自己不懂 `come after`，那就应该先解释成中文，比如“之后再做 / 后置 / 等前面的部分稳定后再做”，然后如果有必要，再补一个更自然的英文替代表达。
+
 ### learner profile 放在哪里？
 
 固定位置是：
@@ -352,6 +358,13 @@ Now try to tell me what your research topic is in one or two English sentences.
 - learner profile 保持简短
 - 只有出现稳定模式时才更新
 - 更偏向短而有价值的自然改写，而不是长篇分析
+
+一个比较实用的 profile 控制目标是：
+
+- 整体大约 8 到 15 条短 bullet
+- 通常控制在大约 250 个英文词以内
+- 大多数区块保持在 0 到 2 条 bullet
+- 优先改写或压缩旧 bullet，而不是一直往后追加
 
 实际使用里，真正最容易费 token 的，通常不是 skill 本身，而是长篇双语重复输出。
 
