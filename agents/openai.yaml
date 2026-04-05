@@ -1,7 +1,7 @@
 interface:
   display_name: "Adaptive English Companion"
-  short_description: "ET-style bilingual English teacher for mixed Chinese-English coaching"
-  default_prompt: "Use $adaptive-english-companion, ET, or 英语老师 mode to help me practice English through adaptive bilingual conversation, correction, polishing, and natural reformulation."
+  short_description: "Explicit ET mode for lightweight English help"
+  default_prompt: "Use $adaptive-english-companion to keep my main task moving while lightly improving my English with ET-style guidance."
 
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

@@ -2,9 +2,9 @@
 
 [简体中文](README.zh-CN.md) | [English](README.md)
 
-A Codex skill for learners who want an English teacher that gradually becomes familiar, supportive, and genuinely useful in real conversation.
+A Codex skill for learners who want explicit ET mode during normal work, project, and study conversations so English learning can happen alongside the main task.
 
-Adaptive English Companion is designed to feel less like a grammar examiner and more like a companion-style teacher. It accepts mixed Chinese-English input, helps the learner say what they really mean, offers natural English reformulations, and gradually adapts to recurring habits, weak points, and preferences over time through a learner profile that it reads, creates, and updates automatically.
+Adaptive English Companion is designed to feel less like a grammar examiner and more like a companion-style teacher. It accepts mixed Chinese-English input, keeps the main task moving, offers natural English reformulations, and gradually adapts to recurring habits, weak points, and preferences over time through a learner profile stored at `learner-profile.md`.
 
 When the skill is active, replies should visibly begin with `ET:` by default so the learner can tell the skill is actually being used.
 
@@ -39,7 +39,7 @@ The intended user experience is simple:
 
 1. Install the skill
 2. Start chatting
-3. Use it like an English teacher
+3. Add an explicit ET cue when you want this skill for the current message
 4. Let the personalization become stronger over time
 
 You can use it immediately after installation.
@@ -58,6 +58,7 @@ After installation, start with any of these:
 - `英语老师，和我一起练英语。`
 - `ET: help me express this idea naturally in English.`
 - `et: help me explain this project.`
+- `ET: explain rules.py, and help me say it in natural English.`
 
 That is enough to begin.
 
@@ -79,13 +80,28 @@ Convenient shorthand:
 - `english teacher`
 - `英语老师`
 - `ET:`
+- `ET：`
 - `et:`
+- `et：`
 - `ET,`
+- `ET，`
 - `et,`
+- `et，`
 
 In a fresh chat, the full skill name is safest. In everyday use, shorthand is often more natural.
 
 The shorthand works best when the message clearly asks for English coaching, correction, polishing, or conversation practice. If the message is mainly about something else, such as project status or bug triage, use the full skill name to force the route more reliably.
+
+Full-width punctuation is also intended to work the same way as ASCII punctuation, especially `:` / `：` and `,` / `，`.
+
+## How Activation Works
+
+- Treat the explicit cue in the current message as the switch for this skill.
+- If the current message contains `$adaptive-english-companion`, `ET`, `et`, `英语老师`, or the other shorthand forms, the skill should activate for that message.
+- If the current message does not include an explicit cue, do not assume the skill stays on just because an earlier turn used it.
+- In long technical threads, the full skill name is still the safest trigger.
+
+When active, the skill should still complete the main task. It should add lightweight English help on top of that task rather than turning every request into a full lesson.
 
 ## Real Usage Examples
 
@@ -276,6 +292,14 @@ If you want the strongest possible trigger, use:
 
 - `$adaptive-english-companion`
 
+### Where is the learner profile stored?
+
+The canonical path is:
+
+- `learner-profile.md` in the skill root
+
+The skill should always read and update that file when active. If it does not exist yet, the skill should create it at that exact path.
+
 ### Do I need to create `learner-profile.md` myself?
 
 No. The intended design is that the agent creates it for the learner if it is missing, then keeps using and updating it afterward.
@@ -314,6 +338,7 @@ The biggest sources of extra cost are:
 This skill stays lighter by:
 
 - using Chinese adaptively instead of on every line
+- keeping the main task first and the English coaching brief unless the user asks for more
 - keeping the learner profile short
 - updating the profile only when stable patterns appear
 - prioritizing compact reformulations over long explanations
@@ -343,6 +368,7 @@ You can install it through Codex skill installation flows, or copy it into your 
 4. Copy these items from this repo into that folder:
    - `SKILL.md`
    - `agents/openai.yaml`
+   - `learner-profile.md` if you want to ship a starter profile
    - `references/`
 5. Open a new chat in Codex.
 6. If the skill is still not discovered, restart Codex once and try again.
@@ -356,6 +382,7 @@ After copying the files, your installed folder should look like this:
 
 ```text
 adaptive-english-companion/
+├── learner-profile.md
 ├── SKILL.md
 ├── agents/
 │   └── openai.yaml
@@ -376,6 +403,7 @@ To update an existing install:
 2. Replace the installed local copies of:
    - `SKILL.md`
    - `agents/openai.yaml`
+   - `learner-profile.md` if you keep one
    - `references/`
 3. Open a new chat in Codex and test the skill again.
 4. If the old behavior still appears, restart Codex once.
@@ -400,6 +428,7 @@ If the skill is active, the reply should normally begin with `ET:`.
 
 ```text
 adaptive-english-companion/
+├── learner-profile.md
 ├── SKILL.md
 ├── README.md
 ├── README.zh-CN.md

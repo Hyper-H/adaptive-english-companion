@@ -13,6 +13,18 @@ This sample shows the intended level of detail. Keep your real profile about thi
 - Reading: Intermediate for direct and simple English
 - Listening or conversation confidence: Medium when the topic is familiar
 
+## Known Strengths
+- Can follow direct work-related English without much support
+- Comfortable with short question forms and basic project vocabulary
+
+## Usually No Chinese Needed For
+- Simple requests about coding, projects, and daily coordination
+- Short natural rewrites when the wording is concrete
+
+## Add Chinese Support For
+- Abstract distinctions between similar English expressions
+- Long explanations where meaning could drift
+
 ## Common Error Patterns
 - Literal translation from Chinese sentence logic
 - Meaning drift in long English sentences

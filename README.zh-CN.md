@@ -2,9 +2,9 @@
 
 [简体中文](README.zh-CN.md) | [English](README.md)
 
-一个面向 Codex 的英语学习 skill，适合想要“越来越熟悉自己”的陪伴式英语老师，而不是只会机械纠错的工具。
+一个面向 Codex 的英语学习 skill，适合想在正常办公、写项目、做研究时，用显式 ET 模式顺带学英语的人。
 
-`Adaptive English Companion` 想做的，不是传统那种像批改器一样的英语工具，而是一个更像熟悉你的老师的英语搭子。它支持中英混输，会先理解你真正想表达的意思，再给你更自然的英文表达；它不会每次都把对话变成语法课，而是会继续和你聊下去，并通过自动读取、创建和更新 learner profile，随着使用逐渐更懂你的习惯、弱点和偏好。
+`Adaptive English Companion` 想做的，不是传统那种像批改器一样的英语工具，而是一个更像熟悉你的老师的英语搭子。它支持中英混输，会先把主任务继续做下去，再顺手给你更自然的英文表达；它不会每次都把对话变成语法课，而是会通过放在 `learner-profile.md` 的学习者画像，随着使用逐渐更懂你的习惯、弱点和偏好。
 
 当这个 skill 真正在工作时，默认回复会以 `ET:` 开头，这样学习者可以一眼看出当前是不是这个 skill 在起作用。
 
@@ -39,7 +39,7 @@
 
 1. 安装 skill
 2. 直接开始聊天
-3. 把它当英语老师用
+3. 当你想启用它时，在当前这条消息里加明确的 ET 触发词
 4. 让个性化能力随着使用慢慢增强
 
 安装后就可以立刻用起来。
@@ -58,6 +58,7 @@
 - `英语老师，和我一起练英语。`
 - `ET: help me express this idea naturally in English.`
 - `et: help me explain this project.`
+- `ET: explain rules.py, and help me say it in natural English.`
 
 到这里就够了。
 
@@ -81,13 +82,28 @@
 - `english teacher`
 - `英语老师`
 - `ET:`
+- `ET：`
 - `et:`
+- `et：`
 - `ET,`
+- `ET，`
 - `et,`
+- `et，`
 
 如果是新开对话，完整写 skill 名最稳。日常使用时，短触发词通常会更自然。
 
 这些短触发词更适合“看起来就像在找英语老师”的消息，比如纠错、润色、自然表达、陪练对话。如果整句话主要是在问项目进度、bug 修复或别的任务，建议直接写完整 skill 名，这样更稳。
+
+全角和半角标点也应该按等价理解，尤其是 `:` / `：` 和 `,` / `，`。
+
+## 触发是怎么工作的
+
+- 把当前这条消息里的显式触发词，当成这个 skill 的开关。
+- 如果当前消息里有 `$adaptive-english-companion`、`ET`、`et`、`英语老师` 或其他 shorthand，这一条消息就应该启用这个 skill。
+- 如果当前消息里没有显式触发词，不要因为前几轮用过，就默认它还在开启状态。
+- 在很长的技术线程里，完整 skill 名仍然是最稳的触发方式。
+
+启用以后，这个 skill 仍然应该先完成主任务，再在主任务上附加轻量的英语帮助，而不是把每个请求都变成完整英语课。
 
 ## 真实对话示例
 
@@ -278,6 +294,14 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 - `$adaptive-english-companion`
 
+### learner profile 放在哪里？
+
+固定位置是：
+
+- skill 根目录下的 `learner-profile.md`
+
+这个 skill 启用后，应该总是读写这个文件。如果它还不存在，就在这个确切路径创建它。
+
 ### `learner-profile.md` 需要我自己创建吗？
 
 不需要。这个 skill 的设计就是：如果 profile 不存在，agent 应该自动创建；之后再持续读取和更新它。
@@ -316,6 +340,7 @@ Now try to tell me what your research topic is in one or two English sentences.
 这个 skill 默认是按轻量思路设计的：
 
 - 中文解释是自适应的，不是每句必带
+- 默认先把主任务做下去，英语帮助保持简短，除非用户明确想要更多
 - learner profile 保持简短
 - 只有出现稳定模式时才更新
 - 更偏向短而有价值的自然改写，而不是长篇分析
@@ -345,6 +370,7 @@ Now try to tell me what your research topic is in one or two English sentences.
 4. 把本仓库里的这些内容复制进去：
    - `SKILL.md`
    - `agents/openai.yaml`
+   - `learner-profile.md`，如果你想直接带一个起始 profile
    - `references/`
 5. 在 Codex 里新开一个对话。
 6. 如果还是没有识别到这个 skill，就重启一次 Codex 再试。
@@ -358,6 +384,7 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 ```text
 adaptive-english-companion/
+├── learner-profile.md
 ├── SKILL.md
 ├── agents/
 │   └── openai.yaml
@@ -378,6 +405,7 @@ adaptive-english-companion/
 2. 用最新内容替换本地安装目录中的：
    - `SKILL.md`
    - `agents/openai.yaml`
+   - `learner-profile.md`，如果你本地也保留这份文件
    - `references/`
 3. 在 Codex 里新开一个对话再测试。
 4. 如果看起来还是旧行为，再重启一次 Codex。
@@ -402,6 +430,7 @@ adaptive-english-companion/
 
 ```text
 adaptive-english-companion/
+├── learner-profile.md
 ├── SKILL.md
 ├── README.md
 ├── README.zh-CN.md
