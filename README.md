@@ -333,11 +333,61 @@ Current GitHub repo:
 
 - `https://github.com/Hyper-H/adaptive-english-companion`
 
-Install it through Codex skill installation flows, or copy the folder into your local Codex skills directory.
+You can install it through Codex skill installation flows, or copy it into your local Codex skills directory manually.
+
+### Manual Install From This Repo
+
+1. Clone or download this repository.
+2. Locate your local Codex skills directory.
+3. Create a folder named `adaptive-english-companion` inside that skills directory.
+4. Copy these items from this repo into that folder:
+   - `SKILL.md`
+   - `agents/openai.yaml`
+   - `references/`
+5. Open a new chat in Codex.
+6. If the skill is still not discovered, restart Codex once and try again.
+
+Typical local skill locations:
+
+- Windows: `C:\Users\<your-user>\.codex\skills\adaptive-english-companion`
+- macOS/Linux: `~/.codex/skills/adaptive-english-companion`
+
+After copying the files, your installed folder should look like this:
+
+```text
+adaptive-english-companion/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+└── references/
+    ├── profile-template.md
+    └── update-rules.md
+```
 
 For a first-time install, opening a new chat is often enough, but some Codex setups may still need a restart before the new skill is discovered.
 
-If you update the GitHub repo later, that does not automatically update an already installed local copy. Sync or reinstall the local skill folder first, then test again in a new chat.
+### Updating An Existing Local Install
+
+If you update the GitHub repo later, that does not automatically update an already installed local copy.
+
+To update an existing install:
+
+1. Pull the latest repo changes or re-download the repo.
+2. Replace the installed local copies of:
+   - `SKILL.md`
+   - `agents/openai.yaml`
+   - `references/`
+3. Open a new chat in Codex and test the skill again.
+4. If the old behavior still appears, restart Codex once.
+
+### Quick Verification
+
+After installation or update, test in a fresh chat with one of these:
+
+- `$adaptive-english-companion help me polish this sentence: I want make this project better.`
+- `ET: help me say this naturally: I want make this project better.`
+
+If the skill is active, the reply should normally begin with `ET:`.
 
 ## Notes for Users
 

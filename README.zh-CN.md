@@ -335,11 +335,61 @@ Now try to tell me what your research topic is in one or two English sentences.
 
 - `https://github.com/Hyper-H/adaptive-english-companion`
 
-你可以通过 Codex 的 skill 安装流程安装它，或者直接复制到本地 Codex skills 目录中。
+你可以通过 Codex 的 skill 安装流程安装它，也可以手动复制到本地 Codex skills 目录中。
+
+### 手动从这个仓库安装
+
+1. 克隆或下载这个仓库。
+2. 找到你本机的 Codex skills 目录。
+3. 在这个目录里新建一个名为 `adaptive-english-companion` 的文件夹。
+4. 把本仓库里的这些内容复制进去：
+   - `SKILL.md`
+   - `agents/openai.yaml`
+   - `references/`
+5. 在 Codex 里新开一个对话。
+6. 如果还是没有识别到这个 skill，就重启一次 Codex 再试。
+
+常见本地路径：
+
+- Windows：`C:\Users\<你的用户名>\.codex\skills\adaptive-english-companion`
+- macOS/Linux：`~/.codex/skills/adaptive-english-companion`
+
+复制完成后，你本地安装目录的结构应该类似这样：
+
+```text
+adaptive-english-companion/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+└── references/
+    ├── profile-template.md
+    └── update-rules.md
+```
 
 如果是第一次安装，很多时候新开一个对话就够了；但某些 Codex 环境下，仍然可能需要重启一次才能发现新 skill。
 
-如果你后面更新的是 GitHub 仓库，这不会自动覆盖你本地已经安装的 skill 副本。你需要先同步或重新安装本地 skill 文件夹，再到新对话里测试。
+### 更新已经安装的本地副本
+
+如果你后面更新的是 GitHub 仓库，这不会自动覆盖你本地已经安装的 skill 副本。
+
+更新本地已安装副本时：
+
+1. 先拉取最新仓库，或者重新下载最新版本。
+2. 用最新内容替换本地安装目录中的：
+   - `SKILL.md`
+   - `agents/openai.yaml`
+   - `references/`
+3. 在 Codex 里新开一个对话再测试。
+4. 如果看起来还是旧行为，再重启一次 Codex。
+
+### 快速验证
+
+安装或更新后，可以在新对话里直接测试：
+
+- `$adaptive-english-companion help me polish this sentence: I want make this project better.`
+- `ET: help me say this naturally: I want make this project better.`
+
+如果 skill 成功启用，回复通常会以 `ET:` 开头。
 
 ## 给用户的说明
 
