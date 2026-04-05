@@ -100,6 +100,10 @@ Full-width punctuation is also intended to work the same way as ASCII punctuatio
 - If the current message contains `$adaptive-english-companion`, `ET`, `et`, `英语老师`, or the other shorthand forms, the skill should activate for that message.
 - If the current message does not include an explicit cue, do not assume the skill stays on just because an earlier turn used it.
 - In long technical threads, the full skill name is still the safest trigger.
+- Recommended workflow for context-heavy threads:
+  - use `$adaptive-english-companion` when you first want to switch a long existing thread into ET mode
+  - after that, `ET` shorthand is often enough if the following messages still clearly ask for English help
+  - if the thread drifts back into technical execution or certainty matters, use `$adaptive-english-companion` again instead of relying on shorthand alone
 
 When active, the skill should still complete the main task. It should add lightweight English help on top of that task rather than turning every request into a full lesson.
 
@@ -291,6 +295,10 @@ If the message is mainly about another topic, such as coding progress, bug fixes
 If you want the strongest possible trigger, use:
 
 - `$adaptive-english-companion`
+
+In an existing thread that already has strong coding or project context, this is the recommended first switch.
+
+After that, shorthand such as `ET` will often work for nearby follow-up turns if the current message still clearly asks for English help, but it should not be treated as a guarantee. If you need certainty, use `$adaptive-english-companion` again.
 
 ### Where is the learner profile stored?
 

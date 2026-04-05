@@ -102,6 +102,10 @@
 - 如果当前消息里有 `$adaptive-english-companion`、`ET`、`et`、`英语老师` 或其他 shorthand，这一条消息就应该启用这个 skill。
 - 如果当前消息里没有显式触发词，不要因为前几轮用过，就默认它还在开启状态。
 - 在很长的技术线程里，完整 skill 名仍然是最稳的触发方式。
+- 对于已经有很多上下文的旧线程，推荐这样用：
+  - 第一次想把这个长线程切到 ET 模式时，先写 `$adaptive-english-companion`
+  - 后面几轮如果当前消息仍然明显是在要英语帮助，`ET` 这种 shorthand 往往就够用
+  - 如果线程又回到技术执行上下文，或者你这次一定想稳触发，就再写一次 `$adaptive-english-companion`
 
 启用以后，这个 skill 仍然应该先完成主任务，再在主任务上附加轻量的英语帮助，而不是把每个请求都变成完整英语课。
 
@@ -293,6 +297,10 @@ Now try to tell me what your research topic is in one or two English sentences.
 如果你想用最稳的触发方式，直接写：
 
 - `$adaptive-english-companion`
+
+如果这是一个已经有很强 coding / project 上下文的旧线程，这也是最推荐的第一次切换方式。
+
+后续几轮里，如果当前消息仍然明显是在要英语帮助，`ET` 这种 shorthand 往往也能继续工作；但它不应该被当成绝对保证。如果你这次必须稳，就再写一次 `$adaptive-english-companion`。
 
 ### learner profile 放在哪里？
 
